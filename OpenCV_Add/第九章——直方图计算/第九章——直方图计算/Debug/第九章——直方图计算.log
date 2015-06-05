@@ -1,0 +1,28 @@
+﻿Build started 2015/4/17 23:26:29.
+     1>Project "C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\第九章——直方图计算\第九章——直方图计算.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\第九章—直方图计算.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         L:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt H_S.cpp
+         H_S.cpp
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\第九章—直方图计算.exe.embed.manifest.res" "Debug\第九章—直方图计算_manifest.rc" 
+       Link:
+         L:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.exe" /INCREMENTAL /NOLOGO opencv_ml2410d.lib opencv_calib3d2410d.lib opencv_contrib2410d.lib opencv_core2410d.lib opencv_features2d2410d.lib opencv_flann2410d.lib opencv_gpu2410d.lib opencv_highgui2410d.lib opencv_imgproc2410d.lib opencv_legacy2410d.lib opencv_objdetect2410d.lib opencv_ts2410d.lib opencv_video2410d.lib opencv_nonfree2410d.lib opencv_ocl2410d.lib opencv_photo2410d.lib opencv_stitching2410d.lib opencv_superres2410d.lib opencv_videostab2410d.lib opencv_objdetect2410.lib opencv_ts2410.lib opencv_video2410.lib opencv_nonfree2410.lib opencv_ocl2410.lib opencv_photo2410.lib opencv_stitching2410.lib opencv_superres2410.lib opencv_videostab2410.lib opencv_calib3d2410.lib opencv_contrib2410.lib opencv_core2410.lib opencv_features2d2410.lib opencv_flann2410.lib opencv_gpu2410.lib opencv_highgui2410.lib opencv_imgproc2410.lib opencv_legacy2410.lib opencv_ml2410.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\第九章—直方图计算.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.lib" /MACHINE:X86 "Debug\第九章—直方图计算.exe.embed.manifest.res"
+         Debug\H_S.obj
+         LINK : C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.exe not found or not built by the last incremental link; performing full link
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\第九章—直方图计算.exe.embed.manifest" /manifest "Debug\第九章—直方图计算.exe.intermediate.manifest"
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\第九章—直方图计算.exe.embed.manifest.res" "Debug\第九章—直方图计算_manifest.rc" 
+       LinkEmbedManifest:
+         L:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.exe" /INCREMENTAL /NOLOGO opencv_ml2410d.lib opencv_calib3d2410d.lib opencv_contrib2410d.lib opencv_core2410d.lib opencv_features2d2410d.lib opencv_flann2410d.lib opencv_gpu2410d.lib opencv_highgui2410d.lib opencv_imgproc2410d.lib opencv_legacy2410d.lib opencv_objdetect2410d.lib opencv_ts2410d.lib opencv_video2410d.lib opencv_nonfree2410d.lib opencv_ocl2410d.lib opencv_photo2410d.lib opencv_stitching2410d.lib opencv_superres2410d.lib opencv_videostab2410d.lib opencv_objdetect2410.lib opencv_ts2410.lib opencv_video2410.lib opencv_nonfree2410.lib opencv_ocl2410.lib opencv_photo2410.lib opencv_stitching2410.lib opencv_superres2410.lib opencv_videostab2410.lib opencv_calib3d2410.lib opencv_contrib2410.lib opencv_core2410.lib opencv_features2d2410.lib opencv_flann2410.lib opencv_gpu2410.lib opencv_highgui2410.lib opencv_imgproc2410.lib opencv_legacy2410.lib opencv_ml2410.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\第九章—直方图计算.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.lib" /MACHINE:X86 "Debug\第九章—直方图计算.exe.embed.manifest.res"
+         Debug\H_S.obj
+         第九章——直方图计算.vcxproj -> C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\Debug\第九章—直方图计算.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\第九章—直方图计算.unsuccessfulbuild".
+         Touching "Debug\第九章—直方图计算.lastbuildstate".
+     1>Done Building Project "C:\Users\Azure_figure\Desktop\s_mex\OpenCV\第九章——直方图计算\第九章——直方图计算\第九章——直方图计算.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:11.54

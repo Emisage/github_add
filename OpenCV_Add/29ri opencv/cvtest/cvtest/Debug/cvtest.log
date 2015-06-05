@@ -1,0 +1,17 @@
+﻿Build started 2015/3/30 1:39:36.
+     1>Project "C:\Users\Azure_figure\Desktop\s_mex\29ri opencv\cvtest\cvtest\cvtest.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\cvtest.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         cvtest.vcxproj -> C:\Users\Azure_figure\Desktop\s_mex\29ri opencv\cvtest\Debug\cvtest.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\cvtest.unsuccessfulbuild".
+         Touching "Debug\cvtest.lastbuildstate".
+     1>Done Building Project "C:\Users\Azure_figure\Desktop\s_mex\29ri opencv\cvtest\cvtest\cvtest.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.18

@@ -1,0 +1,1246 @@
+\documentclass[12pt,twoside,a4paper,openany]{book}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{CJK,indentfirst,fancyhdr,amsmath,amsthm}%,amscd,amssymb
+\usepackage{anysize,xcolor}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.0cm,bottom=1.8cm}
+
+\usepackage{graphicx}
+\usepackage[CJKbookmarks=true]{hyperref}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,bm} % 数学宏包
+\usepackage{titlesec}
+\usepackage{enumerate}
+\usepackage{subfigure}
+\usepackage[all]{xy}
+
+
+\newcommand{\Chei}{\CJKfamily{hei}} %黑体
+\newcommand{\Ckai}{\CJKfamily{kai}} % 楷体
+\newcommand{\Csong}{\CJKfamily{song}} % 宋体
+\newcommand{\Cli}{\CJKfamily{li}}
+\newcommand{\Cfs}{\CJKfamily{fs}}% 仿宋体
+
+\newcommand{\HZxiaosan}{\fontsize{15bp}{\baselineskip}\selectfont}
+\newcommand{\HZxiaoer}{\fontsize{18bp}{\baselineskip}\selectfont}
+\newcommand{\HZxiaoyi}{\fontsize{21bp}{\baselineskip}\selectfont}
+
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yichu}{\fontsize{32pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoyihao}{\fontsize{26pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{24pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+
+
+\setlength{\parindent}{2em} %缩进
+\setlength{\parskip}{1pt}%段间距
+
+
+\AtBeginDocument{\begin{CJK*}{GBK}{song}\CJKtilde\sloppy}
+\AtEndDocument{\end{CJK*}}
+
+\begin{document}\Large
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%定义中文目录、参考文献
+\renewcommand{\contentsname}{\vspace{-3em}\hfil\Chei\xiaosanhao \quad \quad \quad \quad \quad ~~~~目~~~~录\vspace{-1em}}
+\renewcommand{\bibname}{\vspace{-2em}\hfil\Chei\xiaosanhao \quad \quad \quad \quad ~~~~~~~参~ 考~文~献\vspace{-1em}}
+%\CJKindent
+%设置页眉
+\pagestyle{fancy}\fancyhf{} \fancyhead[CO,CE]{\wuhao\Csong
+代数学}
+
+
+%定义中文定理环境
+\theoremstyle{definition}
+\newtheorem{theorem}{\Chei 定理}[chapter]
+\newtheorem{corollary}[theorem]{\Chei 推论}
+\newtheorem{lemma}[theorem]{\Chei 引理}
+\newtheorem{proposition}[theorem]{\Chei 命题}
+\newtheorem{definition}[theorem]{\Chei 定义}
+\newtheorem{algorithm}[]{\Chei 算法}
+\newtheorem{assumption}[theorem]{\Chei 假设}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{\Ckai 注}
+\newtheorem{example}[theorem]{\Ckai 例}
+
+
+
+
+\renewcommand{\qed}{\hfill\rule{1ex}{1.6ex}\medskip}
+\numberwithin{equation}{section}
+
+\allowdisplaybreaks
+
+%设置中文章节
+\providecommand{\CJKnumber}[1]{\ifcase#1\or{1}\or{2}\or{3}\or{4}\or{5}\or{6}\or{7}\or{8}\or{9}\or{10}\fi}
+\makeatletter % '@' is now a normal "letter" for TeX
+\def\chaptermark#1{%
+\markboth {\MakeUppercase{%
+\ifnum \c@secnumdepth >\m@ne \if@mainmatter
+\CJKnumber{\thechapter} \ %
+\fi \fi
+#1}}{}}%
+\def\sectionmark#1{%
+\markright {\MakeUppercase{%
+\ifnum \c@secnumdepth >\z@
+\S\thesection \ %
+\fi #1}}}
+
+\def\@makechapterhead#1{%
+\vspace*{25\p@}%
+{\parindent \z@ \raggedright \normalfont \ifnum \c@secnumdepth
+>\m@ne \if@mainmatter \xiaosanhao\bfseries \CJKnumber{\thechapter}\ \ %\par\nobreak %\vskip 20\p@
+\fi \fi % \interlinepenalty\@M
+\sihao\bfseries #1\par\nobreak \vskip 20\p@ }}
+\makeatother % '@' is restored as a "non-letter" character for TeX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                          %%%%%%%%正文开始%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\baselinestretch}{1.25}
+\chapter{准备知识}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+\renewcommand{\baselinestretch}{1.25}\large
+\section{数域}
+\begin{definition}设$K$是复数集的一个子集,如果$K$满足:\par
+(1)$0,1\in K$;\par
+(2)对于任意的$a,b\in K$,都有$a\pm b,ab\in K$;并且当$b\not=0$时,有$\frac{a}{b}\in K$,\\
+那么称$K$是一个\textbf{数域}.
+\end{definition}
+其中第$(2)$个条件可以说成：$K$对于加、减、乘、除4种运算封闭。
+
+在平时应用中，有很多数域，如复数域$C$，实数域$R$，有理数域$Q$。除了$C$，$R$，$Q$之外，还有其他数域，例如：\\
+\centerline{$Q(\sqrt{2})=\{a+b\sqrt{2}|a,b\in Q\}$}\\
+容易验证，$Q(\sqrt{2})$也是一个域。\par
+数域是一个复数的子集，在数域上进行方程组求解、矩阵的相似对角化等过程，是基于数域对加减乘除运算封闭的性质，如果集合里的元素不是复数，只要满足一定的运算性质，同样可以进行相应的运算过程，只是运算对象不再是复数，而是集合里符合运算性质的元素。下面我们介绍比数域更一般的概念。
+
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{域}
+\begin{definition}设$F$是在其上定义了两个运算（加法$"+"$、乘法$"\cdot"$）的集合，并且这两个运算满足：\par
+(1)$(F;+)$是交换群；\par
+(2)$(F^{\ast};\cdot)$是交换群，其中$F^{\ast}=F\setminus \{0\}$；\par
+(3)运算$"\cdot"$对$"+"$满足分配律，\\
+则称$F$为\textbf{域}。
+\end{definition}
+
+\begin{definition}设$F$是域，如果存在正整数$n$，使得对于每个$x\in F$都有$nx=0$，则称满足此条件的最小正整数$n$为域$F$的\textbf{特征数}。如果不存在这样的正整数$n$，则称域$F$的特征数为$0$。用$CharF$表示域$F$的特征数。
+\end{definition}
+域$F$的特征数是素数或者$0$。对于有理数域$Q$和有限剩余类域$Z_{p}$，有$CharQ=0$，$CharZ_{p}=p$，其中$p$是素数。特征数是$0$的域都包含有理数域$Q$ 作为它的一个子域。在此我们只考虑特征数为$0$的情况。
+
+例：$K=\{0,1\}$在下面定义的运算下是一个域。
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  $+$ & 0 & 1 \\
+  \hline
+  0 & 0 & 1 \\
+  \hline
+  1 & 1 & 0 \\
+  \hline
+\end{tabular}
+\begin{tabular}{|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  $\cdot$ & 0 & 1 \\
+  \hline
+  0 & 0 & 0 \\
+  \hline
+  1 & 0 & 1 \\
+  \hline
+\end{tabular}
+\end{table}
+
+
+\begin{definition}设$V$是一个非空集合，$F$是一个域。在$V$上定义了一个代数运算：$(\alpha,\beta)\mapsto\gamma$，叫做加法，把$\gamma$称为$\alpha$和$\beta$的和，记作$\gamma=\alpha+\beta$。在$F$与$V$之间定义了一个运算，即$F\times V$到$V$的一个映射：$(k,\alpha)\mapsto\delta$，叫做纯量乘法（当$F$为数域时，也叫数量乘法），把$\delta$称为$k$与$\alpha$的纯量乘积（当$F$为数域时，也叫数量乘积），记作$\delta=k\alpha$。如果加法和数量乘法满足下述8 条运算法则：对任意的$\alpha,\beta,\gamma\in V$，任意的$k,l\in F$，有\par
+(1) $\alpha+\beta=\beta+\alpha$  （加法交换律）；\par
+(2) $(\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)$ （加法结合律）；\par
+(3) $V$中有一个元素，记作$0$，它使得\\
+\centerline{$\alpha+0=\alpha$，$\forall\alpha\in V$，}\par
+(4) 对于$\alpha\in V$，存在$\beta\in V$，使得\\
+\centerline{$\alpha+\beta=0$，}\\
+具有这个性质的元素$\beta$称为$\alpha$的负元素；\par
+(5) $1\alpha=\alpha$，\par
+(6) $(kl)\alpha=k(l\alpha)$，\par
+(7) $(k+l)\alpha=k\alpha+l\alpha$，\par
+(8) $k(\alpha+\beta)=k\alpha+k\beta$，\\
+则称$V$是域$F$上的一个\textbf{线性空间}。
+\end{definition}
+数域$K$上所有$n$元有序数组组成的集合$K^{n}$，对于有序数组的加法与数量乘法，成为数域$K$上的一个线性空间。\par
+数域$K$上所有$s\times n$矩阵组成的集合，对于矩阵的加法与数量乘法，成为数域$K$上的一个线性空间。\par
+复数域$C$可以看成实数域$R$上的一个线性空间，而实数域$R$可以看成有理数域$Q$上的线性空间。
+
+\noindent \textbf{思考题}\par
+$2n+1$个实数有如下性质：\par
+$(\ast)$任意去掉一个，余下的$2n$个可以分为$2$ 组，每组$n$个，且和相等。\\
+则$2n+1$个实数必相同。\par
+解：设$2n+1$个实数为$x_{1}$，$x_{2}$，$\cdots $，$x_{2n+1}$，令$V=<x_{1},x_{2},\cdots ,x_{2n+1}>$是$Q$上关于$R$的有限维线性子空间，不妨设$\beta _{1},\cdots ,\beta _{s}$为$V$的一组基。
+
+则$x_{i}=\sum\limits_{j=1}^{s} a_{ij}\beta_{j}$，$(a_{ij}\in Q)$，$i=1,2,\cdots ,2n+1$\par
+假设去掉的是$x_{2n+1}$，剩下的$2n$个数有\\
+\centerline{$x_{1}+x_{2}+\cdots +x_{n}=x_{n+1}+x_{n+2}+\cdots +x_{2n}$}\\
+\centerline{$\sum\limits_{i=1}^{n} x_{i}=\sum\limits_{i=n+1}^{2n} x_{i}$}\par
+将$x_{i}=\sum\limits_{j=1}^{s} a_{ij}\beta_{j}$ 代入上式，得\\
+\centerline{$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{s} a_{ij}\beta_{j}=\sum\limits_{i=n+1}^{2n}\sum\limits_{j=1}^{s} a_{ij}\beta_{j}$}\\
+\centerline{$\sum\limits_{j=1}^{s}\sum\limits_{i=1}^{n} a_{ij}\beta_{j}=\sum\limits_{j=1}^{s}\sum\limits_{i=n+1}^{2n} a_{ij}\beta_{j}$}\par
+取定$j$，两边对应系数相等，有\\
+\centerline{$\sum\limits_{i=1}^{n} a_{ij}=\sum\limits_{i=n+1}^{2n} a_{ij}, j=1,2,\cdots ,s$}\par
+则对于固定的$j$，$a_{1,j},a_{2,j},\cdots ,a_{2n+1,j}$也有性质$(\ast)$，而$a_{ij}\in Q$，则$a_{1,j}=a_{2,j}=\cdots =a_{2n+1,j}$。所以$x_{1}=x_{2}=\cdots =x_{2n+1}$。
+\begin{remark}题目中的域的特征数为$0$，假如在有限特征的域上满足性质$(\ast)$，结论不一定成立。例如在$Z_{3}$上，$\{1,1,2,2,0\}$就满足性质$(\ast)$，但它们不相等也不全是零。
+\end{remark}
+
+
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{环}
+\begin{definition}设集合$R$上定义了两种运算$"+"$ 和$"\cdot"$，并且满足：\par
+(1) $\{R;+\}$是交换群，\par
+(2) $"\cdot "$满足结合律，\par
+(3) $"\cdot"$对$"+"$满足分配律，\\
+则称$\{R;+,\cdot\}$为\textbf{环}。
+\end{definition}
+如果对于$"\cdot"$有单位元，称$R$为幺环。
+
+如果运算$"\cdot"$满足交换律，即$a\cdot b=b\cdot a$，$\forall a,b\in R$，则称$R$为交换环。
+
+例：整数环有单位元$1$，偶数构成的环没有单位元。
+
+例：数域$F$上的一元多项式环是交换环，剩余类环$Z_{n}$是交换环。数域$F$上$n$阶方阵$M_{n}(F)$关于矩阵的加法和乘法运算构成非交换环。
+\begin{definition}设$R$是一个环，如果对于$R$中的非零元素$a$，$b$，有$ab=0$，则称$a$是环$R$中的\textbf{左零因子}，$b$是环$R$中的\textbf{右零因子}。
+\end{definition}
+
+若$R$中的一个元素既是左零因子，又是右零因子，则称它是$R$中的零因子。
+
+例：$M_{n}(F)$和$Z_{n}$（$n$不是素数）都是有零因子的环。
+\begin{definition}我们称非零的，有$1$的，交换的，无零因子的环为\textbf{整环}。
+\end{definition}
+例：整数环、实数域$R$上的一元多项式环$R[x]$等都是整环。
+\begin{definition}（欧几里得整环）设$D$为整环，若存在一个映射$\varphi$：$D^{\ast}\rightarrow N$，对于$\forall  a,b\in D(b\neq0)$，存在$q,r\in D$，使得$a=bq+r$，且$r=0$或$\varphi(b)>\varphi(r)$，称$D$为\textbf{欧几里得整环}。
+\end{definition}
+\begin{remark}欧几里得整环是一种可以做辗转相除法的整环，函数$\varphi$可以看做是元素大小的量度。
+\end{remark}
+例：整数环$Z$和数域$K$上的一元多项式环$K[x]$都为欧几里得整环。在$K[x]$中，$\varphi(f)=degf$。若$D=Z$，$\varphi(x)=\mid x\mid$。
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{同态}
+\begin{definition}\textbf{同态}是两个代数结构之间保持运算关系的映射。
+\end{definition}
+\begin{definition}设$R$和$R^{\prime}$是环，如果存在映射$\varphi :R\longrightarrow R^{\prime}$，使得映射$\varphi$保持环的运算，即对于$\forall a,b\in R$有\\
+\centerline{$\varphi (a+b)=\varphi(a)+\varphi(b)$}\\
+\centerline{$\varphi(ab)=\varphi(a)\varphi(b)$}\\
+则称$\varphi$是$R$到$R^{\prime}$的环同态，也称环$R$与$R^{\prime}$同态。
+\end{definition}
+相应的还有群同态、域同态。对于两个线性空间来说，同态保持加法和数乘运算，线性空间的同态就是线性空间之间的线性映射。
+
+\begin{remark}若$\varphi$是$K_{1}\longrightarrow K_{2}$的域同态，则$\varphi$一定是单射。事实上，如果对于$a\in K_{1}$，且$a\neq 0$，有$\varphi(a)=0$，$\varphi(1)=\varphi(aa^{-1})=0$，与$\varphi(1)=1$矛盾。
+\end{remark}
+
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{域上的多项式环}
+\renewcommand{\baselinestretch}{1.25}\large
+\subsection{最大公因式}
+\begin{definition}对于$f(x),g(x)\in K[x]$，可以找到一个次数最大的多项式$d(x)$，使得$d(x)\mid f(x)$且$d(x)\mid g(x)$，称$d(x)$为$f(x)$和$g(x)$ 的\textbf{最大公因式}。首$1$的最大公因式记为$(f(x),g(x))$。
+\end{definition}
+
+$\forall f(x),g(x)\in K[x]$，可以用欧几里得算法得到$(f(x),g(x))$，而且找到$u(x),v(x)\in K[x]$，使$(f(x),g(x))=f(x)u(x)+g(x)v(x)$。若$f(x)$与$g(x)$互素，则$f(x)u(x)+g(x)v(x)=1$。
+
+\renewcommand{\baselinestretch}{1.25}\large
+\subsection{不可约多项式}
+\begin{definition}在$K[x]$中，如果$f(x)\mid g(x)$且$g(x)\mid f(x)$，则称$f(x)$与$g(x)$\textbf{相伴}。
+\end{definition}
+\begin{definition}$K[x]$中一个次数不大于零的多项式$p(x)$，如果它在$K[x]$中的因式只有零次多项式和$p(x)$的相伴元，则称$p(x)$是数域$K$上的一个\textbf{不可约多项式}；否则称$p(x)$为可约多项式。
+\end{definition}
+$C[x]$中不可约多项式都是一次的，$R[x]$中不可约多项式为一次的和判别式小于零的二次多项式，$Q[x]$中不可约多项式可以是任意次的，如$x^{n}-2$。
+
+\begin{theorem}（唯一因式分解定理）$K[x]$中每一个次数大于零的多项式$f(x)$都能唯一的分解成数域$K$上有限多个不可约多项式的乘积。所谓唯一性是指，如果$f(x)$有两个这样的分解式：\\
+\centerline{$f(x)=p_{1}(x)p_{2}(x)\cdots p_{s}(x)=q_{1}(x)q_{2}(x)\cdots q_{t}(x)$,}\\
+则一定有$s=t$，且适当排列因式的次序后有\\
+\centerline{$p_{i}(x)\sim q_{i}(x),i=1,2,\cdots ,s.$}
+\end{theorem}
+
+在考虑因式分解问题时，整系数多项式的分解问题等价于将其视为有理系数域上的多项式分解问题。判断整系数多项式是否可约，最常用的是$Eisenstein$判别法。
+\begin{theorem}（$Eisenstein$）设$f(x)=a_{n}x^{n}+\cdots +a_{1}x^{1}+a_{0}\in Z[x]$。如果存在一个素数$p$，使得\par
+(1) $p\nmid a_{n}$；\par
+(2) $p\mid a_{i},i=0,1,\cdots ,n-1$；\par
+(3) $p^{2}\nmid a_{0}$;\\
+则$f(x)$在有理数域上是不可约的。
+\end{theorem}
+
+在$K[x]$中，$3$次及$3$次以下的多项式可约与对应的多项式方程在数域$K$上有根是等价的。
+
+下面的结论也对判断一个多项式是否可约有帮助。
+\begin{theorem}设\\
+\centerline{$f(x)=a_{n}x^{n}+a_{n-1}x^{n-1}+\cdots +a_{1}x^{1}+a_{0}$}\\
+是一个整系数多项式，而$\frac{r}{s}$是它的一个有理根，其中$r$，$s$互素，那么必有$s\mid a_{n}$，$r\mid a_{0}$。
+\end{theorem}
+例：证明\\
+\centerline{$f(x)=x^{3}-5x+1$}\\
+在有理数域上不可约。\par
+如果$f(x)$可约，那么它至少有一个一次因式，也就是有一个有理根。但是$f(x)$的有理根只可能是$\pm 1$，代入验算可知$\pm 1$全不是根，因而$f(x)$在有理数域上不可约。
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\chapter{域的扩张}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+
+我们解方程的时候总是将它做因式分解，如果有一次因式的话，就会有相应的根，但是当方程在域上不可约的时候就没有办法解出方程的根，在代数上就会想到把域扩大，扩大之后的域可能就会有方程的根。
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{扩域}
+
+
+\begin{definition}如果集合$K$是域$F$的一个非空子集，并且$K$在域$F$的运算下构成一个域，则称$K$是域$F$的子域，或称$F$是$K$的扩域，也称$F$是$K$的扩张。
+\end{definition}
+
+扩域$F$可看成子域$K$上的线性空间，用$[F:K]$表示$F$在$K$上的维数$dim_{K}F$。
+
+例如前面提到的复数域$C$和实数域$R$，复数域$C$就可以看做实数域$R$的扩域，$C$作为$R$上的线性空间，维数为$2$。
+
+\begin{definition}域$K$的两个扩域$E$，$\Omega$，$\rho$是$E\longrightarrow \Omega$ 的域同态，且$\rho|_{k}=id$，则称$\rho$是$E\longrightarrow \Omega$的\textbf{$K-\text{同态}$}（\textbf{$K-\text{嵌入}$}）。
+\end{definition}
+\begin{remark}$1$.$E$，$\Omega$可以看成$K$上的线性空间，$\rho$可以看成$E$到$\Omega$的线性映射。\par
+$2$.同构的域视为一个，不加以区分。
+\end{remark}
+
+\begin{theorem}（维数公式）设$K\subseteq M\subseteq E$都是域。则$[E:K]$ 有限当且仅当$[E:M]$和$[M:K]$有限，且$[E:K]$=$[E:M]$$[M:K]$。
+\end{theorem}
+证：假设$[E:M]=m$，$[M:K]=n$，$E$看成$M$上的线性空间，一组基为$\alpha_{1},\cdots ,\alpha_{m}$。$M$看成$K$上的线性空间，一组基为$\beta_{1},\cdots ,\beta_{n}$，则$\forall s\in E$，有$s=\sum\limits_{i=1}^{m} t_{i}\alpha_{i}$，$t_{i}\in M$。 而把$M$看成$K$ 上的线性空间，有$t_{i}=\sum\limits_{j=1}^{n} l_{ij}\beta_{j}$，$l_{ij}\in K$。所以$s=\sum\limits_{i=1}^{m}\sum\limits_{j=1}^{n} l_{ij}\alpha_{i}\beta_{j}$。而$(\alpha_{i}\beta_{j})_{1\leq i\leq m,1\leq j\leq n}$是线性无关的。故$(\alpha_{i}\beta_{j})_{1\leq i\leq m,1\leq j\leq n}$可以作为$E$看成$K$上的线性空间的一组基，则$[E:K]=mn$。
+
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{等价类，商域}
+$f(x)\in K[x]$，$degf\geq 2$，$\forall h(x)\in K[x]$，有$h(x)=q(x)f(x)+r(x)$，把$K[x]$关于$f(x)$的余数分类。\\
+\centerline{$(f(x))=\{q(x)f(x)\mid q(x)\in K[x]\}$}\\
+\centerline{$a(x)+(f(x))=\{a(x)+q(x)f(x)\mid a(x),q(x)\in K[x]$\}}
+$\forall b(x)\in (a(x)+(f(x)))$当且仅当$b(x)-a(x)=t(x)f(x),t(x)\in K[x]$。\par
+在剩余类上可以定义$"+","\cdot"$：\\
+\centerline{$(r_{1}(x)+(f(x)))+(r_{2}(x)+(f(x)))\triangleq (r_{1}(x)+r_{2}(x))+(f(x))$}\\
+\centerline{$(r_{1}(x)\cdot (f(x)))+(r_{2}(x)+(f(x)))\triangleq r_{1}(x)r_{2}(x)+(f(x))$}\\
+下面验证定义的合理性：\\
+若\\
+\centerline{$r_{1}^{\prime}(x)+(f(x))=r_{1}(x)+(f(x))$}\\
+\centerline{$r_{2}^{\prime}(x)+(f(x))=r_{2}(x)+(f(x))$}\\
+即\\
+\centerline{$r_{1}^{\prime}(x)-r_{1}(x)=t_{1}(x)f(x),r_{2}^{\prime}(x)-r_{2}(x)=t_{2}(x)f(x)$}\\
+则
+\begin{eqnarray}
+&&(r_{1}^{\prime}(x)+r_{2}^{\prime}(x))-(r_{1}(x)+r_{2}(x))\nonumber\\
+&=&(r_{1}^{\prime}(x)-r_{1}(x))+(r_{2}^{\prime}(x)-r_{2}(x))\nonumber\\
+&=&(t_{1}(x)+t_{2}(x))f(x)\nonumber
+\end{eqnarray}
+即\\
+\centerline{$(r_{1}^{\prime}(x)+r_{2}^{\prime}(x))+(f(x))=(r_{1}(x)+r_{2}(x))+(f(x))$}\\
+对于$"\cdot"$, 同样可利用同余性质验证其合理性。\par
+容易验证，$K[x]/(f(x))=(\text{所有剩余类};"+","\cdot")$是一个环。
+
+若$f(x)$是不可约的，$K[x]/(f(x))$是域。\par
+只需证明，$K[x]/(f(x))$中任意元素都有逆元素。设$degf=m$，则\\
+\centerline{$K[x]/(f(x))=\{a_{0}+a_{1}x+\cdots +a_{m-1}x^{m-1}+(f(x))\mid a_{i}\in K\}$}\\
+$\forall g(x)+(f(x))\in K[x]/(f(x))$，在$K[x]$ 中，由欧几里得算法，存在$a(x),b(x)\in K[x]$，使得\\\centerline{$a(x)f(x)+b(x)g(x)=d(x)$}\\
+$d(x)$为$f(x)$与$g(x)$的最大公因式。\par
+因为$f(x)$不可约且$degg<degf$，所以$d(x)=1$，即\\
+\centerline{$a(x)f(x)+b(x)g(x)=1$}\\
+而在$K[x]/(f(x))$中，$a(x)f(x)=0+(f(x))$，则\\
+\centerline{$b(x)g(x)+(f(x))=1+(f(x))$}\\
+即$g(x)+(f(x))$的逆元素为$b(x)+(f(x))$（若$degb\geq m$，利用$f(x)$将$b(x)$化为次数小于$m$ 的多项式。）
+
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{干域}
+为了区分多项式与方程，有些地方会用X表示多项式的未定元，用x表示方程中的元素。\par
+
+由前面可知，当$f(X)$不可约时，$K[X]/(f(X))$是一个域。我们称$E=K[X]/(f(X))$为$K$关于$f(X)$的\textbf{干域}。可以看成$K$的扩域，若$E$看成是$K$ 上的线性空间，则$dim_{K}E=degf$。存在一个的同态映射$\rho:K\longrightarrow E$，使$\rho(a)=a+(f(X))$。 还有在$E$ 中，$X+(f(X))$ 是$f(x)=0$ 的一个根。\par
+
+例：令$K=Q$，$f(X)=X^{5}-2X+2\in Q[X]$。则$Q[X]/(f(X))=\{a_{0}+a_{1}X+a_{2}X^{2}+a_{3}X^{3}+a_{4}X^{4}+(f(X))\mid a_{i}\in Q,i=0,1,2,3,4\}$是一个域。它的一个子域$\{q+(f(X))\mid q\in Q\}$与$Q$同构。$Q[X]/(f(X))$可以看成$Q$上的线性空间，维数为$5$。$1+(f(X))$，$X+(f(X))$，$X^{2}+(f(X))$，$X^{3}+(f(X))$，$X^{4}+(f(X))$是一组基。
+
+\begin{theorem}$K$的一个扩域$\Omega$上有一个$f(X)$的根$x_{0}$，则存在一个域同态$\rho:E\longrightarrow \Omega$使$\rho(g(X)+(f(X)))=g(X_{0})$。
+\end{theorem}
+
+例：设$f(X)=X^{2}-2\in Q[X]$。$Q$关于$f(X)$的干域为$E=Q[X]/(f(X))=\{aX+b+(f(X))\mid a,b\in Q\}$。$f(X)$在$E$上有根$X+(f(X))$。而$f(X)$在$R$ 上有两个根$\sqrt{2}$和$-\sqrt{2}$，则存在同态$\rho:E\longrightarrow R$和$\rho ^{\prime}:E\longrightarrow R$，使$\rho(aX+b+(f(X)))=a\sqrt{2}+b$，$\rho^{\prime}(aX+b+(f(X)))=a(-\sqrt{2})+b$。$f(X)$在$R$ 上有几个根就有几个这样的同态。
+
+\begin{remark}上述例题中$Q(\sqrt{2})$与$Q(-\sqrt{2})$是同构的。由此可见，用代数的方法解方程是简单的，将域的范围不断扩大，总会有根存在，但是根的具体情况就不太容易确定了。
+\end{remark}
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{代数元，极小多项式}
+\begin{definition}设$\Omega$是域$K$的扩张，$\alpha\in \Omega$，若存在一个$K[x]$上的非零多项式$f(x)$，使得$f(\alpha)=0$，则称$\alpha$是$K$上的\textbf{代数元}，否则称$\alpha$是$K$上的\textbf{超越元}。
+\end{definition}
+设$\Omega$是域$K$的扩域，$\alpha\in \Omega$，$f(x)\in K[x]$，$degf=m$，根据定理2.5，令$Im\rho=\{g(\alpha)\mid g(x)\in K[x]\}=\{a_{0}+a_{1}\alpha+\cdots +a_{m-1}\alpha^{m-1}\mid a_{i}\in K,i=0,1,\cdots ,m-1\}$。$Im\rho$是$\Omega$的一个子域，且它同构于$K[x]/(f(x))$。令$K(\alpha)=Im\rho$，记$K(\alpha)$为最小的包含$K$，$\alpha$的$\Omega$子域，或者说$K(\alpha)$是所有包含$K$，$\alpha$的$\Omega$子域的交。
+
+若$\alpha$是数域$K$上的代数元，令$I=\{g(x)\in K[x])\mid g(\alpha)=0\}$。\par
+设$p(x)$是$I$中次数最小的首$1$的非零多项式，且$p(x)$不可约，则$p(x)$可以整除$I$中任意元素。\par
+事实上，若$f(x)=p(x)q(x)+r(x)$，则$f(\alpha)=p(\alpha)q(\alpha)+r(\alpha)$，可得$r(\alpha)=0$，故$r(x)\in I$。又因为$degr<degp$，且$p(x)$不可约。所以$r(x)=0$。\par
+我们把这样的$p(x)$叫做$\alpha$的\textbf{极小多项式}。
+
+那么由定理2.5可知，$K[x]/(f(x))$与$K(\alpha)$之间存在一个域同态，且它是同构，即$K[x]/(f(x))\cong K(\alpha)$。我们知道，扩域可以看成原来域上的线性空间，$K[x]/(f(x))$与$K(\alpha)$都可以看成$K$上的线性空间，而同构的线性空间的维数是相等的。所以$K(\alpha)$作为$K$上的线性空间，维数为$degp$。
+
+\begin{theorem}若$[\Omega:K]$有限，则$\forall \alpha\in \Omega$，$\alpha$是代数元。
+\end{theorem}
+证：$K\subseteq K(\alpha)\subseteq \Omega$，若$[\Omega:K]$有限，由维数公式可知，$[K(\alpha):K]$也有限，而$degp=[K(\alpha):K]$，其中$p(x)$为$\alpha$的极小多项式，即$p(\alpha)=0$。所以$\alpha$是代数元。
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{尺规作图}
+已知有$s$个点$P_{1}(x_{1},y_{1})$，$\cdots$，$P_{s}(x_{s},y_{s})$。通过直尺和圆规想要得到一个新的点$P_{s+1}(x_{s+1},y_{s+1})$。$P_{s+1}$只能通过三种方式得到：\par
+\begin{enumerate}
+  \item 直线与直线相交
+  \item 直线与圆相交
+  \item 圆与圆相交
+\end{enumerate}
+我们利用这些点的坐标得到一个新的域$K=Q(x_{1},\cdots ,x_{s},y_{1},\cdots ,y_{s})$。 则$K\subseteq K(x_{s+1},y_{s+1})\subseteq R$。下面考虑$P_{s+1}$产生的三种情况。\par
+$1$.直线与直线相交\par
+$x_{s+1}$与$y_{s+1}$应该满足方程组\\
+ \begin{equation}
+\left\{
+\begin{aligned}
+&ax+by+c=0\nonumber\\
+&a^{\prime}x+b^{\prime}y+c^{\prime}=0\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+则$x_{s+1},y_{s+1}$均可由$K$中元素线性表出，故$x_{s+1},y_{s+1}\in K$，即$K(x_{s+1},y_{s+1})=K$。\par
+$2$.直线与圆相交\par
+可由方程组\\
+ \begin{equation}
+\left\{
+\begin{aligned}
+&ax+by+c=0\nonumber\\
+&x^{2}+y^{2}+dx+ey+f=0\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+解出$x_{s+1},y_{s+1}$。\par
+将方程组消元可得\\
+\centerline{$m_{1}y^{2}+m_{2}y+m_{3}=0$}\\
+可解出$y_{s+1}$，而$x_{s+1}$可通过直线方程由$y_{s+1}$表示。\par
+
+故$K(x_{s+1},y_{s+1})=K(y_{s+1})$。$[K(y_{s+1}):K]=degp$，$p(x)$为$y_{s+1}$的极小多项式，且$degp=1\text{或}2$。\par
+$3$.圆与圆相交\par
+$x_{s+1}$与$y_{s+1}$可由下面方程组解出\\
+ \begin{equation}
+\left\{
+\begin{aligned}
+&x^{2}+y^{2}+dx+ey+f=0\nonumber\\
+&x^{2}+y^{2}+d^{\prime}x+e^{\prime}y+f^{\prime}=0\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+将方程组的两式相减，即可得到与第二种情况相同类型的方程组，所以第三种情况可转化为第二种。
+
+综上所述，$[K(x_{s+1},y_{s+1}):K]=1\text{或}2$。
+
+假如已知平面上两点$P_{1}(0,0)$，$P_{2}(0,1)$。通过一系列尺规作图可得到$P_{3}(x_{3},y_{3})$，$P_{4}(x_{4},y_{4})$，$\cdots$，$P_{n}(x_{n},y_{n})$。则对应于域扩张为\\
+\centerline{$Q\subseteq Q(x_{3},y_{3})\subseteq E_{1}(x_{4},y_{4})\subseteq \cdots \subseteq E_{n-3}(x_{n},y_{n})$}\\
+其中$E_{0}=Q$，$E_{1}=Q(x_{3},y_{3})$，$E_{i+1}=E_{i}(x_{i+3},y_{i+3})$，$1\leq i\leq n-3$。
+
+则$[E_{i}:E_{i-1}]=1\text{或}2$。即$[E_{n-2}:Q]=2^{s}$。
+
+
+\textbf{例}：证明$60^{\circ}$度角不能用尺规三等分，即不能做出$20^{\circ}$角。
+
+已知$P_{1}(0,0)$，$P_{2}(0,1)$，若能得到$20^{\circ}$角，则能得到点$P(cos20^{\circ},sin20^{\circ})$。则存在扩域链\\
+\centerline{$Q\subseteq E_{1}\subseteq E_{2}\subseteq \cdots \subseteq E_{n-2}$}\\
+使$cos20^{\circ}\in E_{n-2}$，且$[E_{i}:E_{i-1}]=1\text{或}2$。\\
+则存在\\
+\centerline{$Q\subseteq Q(cos20^{\circ})\subseteq E_{n-2}$}\\
+使
+\begin{eqnarray}
+2^{s}&=&[E_{n-2}:Q]\nonumber\\
+&=&[E_{n-2}:Q(cos20^{\circ})][Q(cos20^{\circ}):Q]\nonumber
+\end{eqnarray}
+$[Q(\alpha):Q]$为$\alpha$在$Q$上的极小多项式的次数。\par
+$cos20^{\circ}$在$Q$上的极小多项式不容易直接确定，我们可以找到它的零化多项式，极小多项式一定是零化多项式的因式。由三倍角公式可得\\
+\centerline{$cos60^{\circ}=4cos^{3}20^{\circ}-3cos20^{\circ}$}\\
+则$f(x)=4x^{3}-3x-\frac{1}{2}$为$cos20^{\circ}$ 的零化多项式。而$f(x)$在$Q$上不可约，故$cos20^{\circ}$的极小多项式的次数为$3$。\par
+由维数公式可知\\
+\centerline{$2^{t}=[E_{n-2}:Q(cos20^{\circ})]\cdot 3$}\\
+而\\
+\centerline{$3\nmid 2^{t}$}\\
+所以不存在这样的扩域链，即通过有限次尺规作图画不出$20^{\circ}$角。\par
+
+若$K\subseteq E$为$2$次扩张，即$[E:K]=2$。任取$\alpha \in E$，且$\alpha \notin K$，有$K\subsetneqq K(\alpha)\subseteq E$，有维数公式可知，$[K(\alpha):K]=2$，$[E:K(\alpha)]=1$，则$E=K(\alpha)$。所以$\alpha$在$K$上的极小多项式为$x^{2}+ax+b\in K[x]$，而$x^{2}+ax+b=0$可整理为$y^{2}-c=0$的形式，容易求得原方程的解，解里含有平方根，那么这样的二次扩张是可以用尺规做出来的。\par
+
+通过尺规我们可以等分线段、做线段倍长等长度的加减乘除运算，用尺规还可以根据射影定理进行开平方根的运算。\par
+
+例如：用尺规作正五边形，就是要作出$72^{\circ}$ 角。通过计算可以得到$cos72^{\circ}=\frac{\sqrt{5}-1}{4}$。用尺规进行开方、减法、除法就能得到$cos72^{\circ}$。也就可以作出正五边形了。正$17$边形也可以这样得到，只是过程会更复杂一点，但是方法是一样的。
+\begin{eqnarray}
+cos\frac{2\pi}{17}&=&-\frac{1}{16}+\frac{1}{16}\sqrt{17}+\frac{1}{16}\sqrt{34-2\sqrt{17}}\nonumber\\
+&+&\frac{1}{8}\sqrt{17+3\sqrt{17}-\sqrt{34-2\sqrt{17}}-2\sqrt{34+2\sqrt{17}}}\nonumber
+\end{eqnarray}
+
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\chapter{分裂域}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+\begin{definition}$K$是一个域，$f(x)$是$K[x]$中次数$\geq 1$的多项式，称$K$的扩域$E$为$f(x)$的\textbf{分裂域}，如果$f(x)$在$E$上能够分解成一次因式的乘积，即\\
+\centerline{$f(x)=c(x-\alpha_{1})\cdots (x-\alpha_{n})$,$\alpha_{i}\in E$}\\
+且$E=K(\alpha_{1},\cdots ,\alpha_{n})$。
+\end{definition}
+
+\begin{lemma}若$L$，$M$是$K$上的扩域，且$\rho:M\rightarrow L$是$K-$同态。$M(\alpha)$是$M$上的单代数扩张。$\alpha$的极小多项式为\\
+\centerline{$p(x)=a_{n}x^{n}+\cdots a_{1}x+a_{0}\in M[x]$}\\
+记\\
+\centerline{$\rho(p(x))=\rho(a_{n})x^{n}+\cdots \rho(a_{1})x+\rho(a_{0})\in L[x]$}\\
+若$L$中有$\rho(p(x))$的根$\beta$，则存在$\bar{\rho}:M(\alpha)\longrightarrow L$是一个$K-\text{同态}$，使$\bar{\rho}(m)=\rho(m)$，$\bar\rho(\alpha)=\beta$，且$\bar{\rho}|_{M}=\rho$。
+\end{lemma}
+\begin{remark}$K-\text{同态}$$\bar{\rho}$是把$\alpha$映射到$\rho(p(x))$在$L$中的根，那么有几个根就有几个$K-\text{同态}$。
+\end{remark}
+\begin{lemma}若$E=K(\alpha_{1},\cdots ,\alpha_{n})$是关于$f(x)$的一个分裂域，$L\supseteq K$是$K$的一个扩域且包含$f(x)$ 的所有根，则存在一个$K-\text{同态}$$\rho:E\longrightarrow L$。
+\end{lemma}
+证：由引理$3.2$可知，存在$K(\alpha_{1})$到$L$的$K-\text{同态}$$\rho_{1}:K(\alpha_{1})\longrightarrow L$。$K(\alpha_{1})(\alpha_{2})$是$K(\alpha_{1})$ 上的单代数扩张，设$\alpha_{2}$在$K(\alpha_{1})$ 上的极小多项式为$p_{2}(x)$，由于$\alpha_{2}$为$f(x)$的根，所以$p_{2}(x)$为$f(x)$的因式。故$\rho(p_{2}(x))$在$L$中一定有根$\beta$，由引理$3.2$，存在$K-\text{同态}$$\rho_{2}:K(\alpha_{1})(\alpha_{2})\longrightarrow L$，使得$\rho_{2}(\alpha_{2})=\beta$。同理，存在$K-\text{同态}$$\rho_{3}:K(\alpha_{1},\alpha_{2})(\alpha_{3})\longrightarrow L$。以此类推，存在$E$到$L$的一个$K-\text{同态}$。
+
+\begin{theorem}域$K$上的多项式$f(x)$的分裂域存在，且在同构意义下是唯一的。
+\end{theorem}
+证：先证存在性。$f(x)$的分裂域是显然存在的。如果$f(x)$的有些根不在$K$上，我们可以找到这些根的极小多项式，构造干域来找那些根，最多做$degf$ 次代数扩张，就一定可以找到$f(x)$的所有根。\par
+再证唯一性。若$E_{1}$，$E_{2}$是$f(x)$的两个分裂域，由引理$3.4$，存在$K-\text{同态}$$\rho_{1}:E_{1}\longrightarrow E_{2}$ 和$\rho_{2}:E_{2}\longrightarrow E_{1}$，由于$K-\text{同态}$是域同态，一定是单射。$E_{1}$，$E_{2}$作为$K$上的线性空间，由两个$K-\text{同态}$可知，$dimE_{1}\leq dimE_{2}< \infty$且$dimE_{2}\leq dimE_{1}< \infty$，则$dimE_{1}=dimE_{2}$，即$E_{1}\cong E_{2}$。证毕\par
+
+设$K(\alpha_{1},\cdots,\alpha_{n})$为$f(x)$的分裂域，$L$为$K$的扩域，且包含$f(x)$的所有根。\\
+\xymatrix@C=2ex{
+    K \ar[dd]_{\rho_{0}} & \subseteq & K(\alpha_{1})\ar[ddll]_{\rho_{1}} & \subseteq & K(\alpha_{1},\alpha_{2})\ar[ddllll]_{\rho_{2}} & \subseteq & \cdots & \subseteq & K(\alpha_{1},\cdots ,\alpha_{n})\ar[ddllllllll]_{\rho_{n}} \\
+     & & & & & & & & \\
+    L & & & & & & & &
+    }\\
+$\rho_{0}=id$，$\rho_{i+1}|_{K(\alpha_{1},\cdots ,\alpha_{i})}=\rho_{i}$。\par
+给定$\rho_{i}$，$\rho_{i+1}$的选择可能性个数就是$\rho_{i}(p_{i+1}(x))$在$L$上的不同的根的个数，其中$p_{i+1}(x)$为$\alpha_{i+1}$在$K(\alpha_{1},\cdots ,\alpha_{i})$中的极小多项式。$[K(\alpha_{1},\cdots ,\alpha_{i})(\alpha_{i+1}):K(\alpha_{1},\cdots ,\alpha_{i})]=degp_{i+1}$，所以$\rho_{n}$的可能个数$\leq [K(\alpha_{1},\cdots ,\alpha_{n}):K]\leq n!$。当有重根的时候就会小于$n!$，当$K$的特征为$0$或$f(x)$没有重根是取等号。\par
+
+例：$f(x)=x^{3}-2$在$Q$上不可约，在$C$上有三个根。\\
+\xymatrix@C=2ex{
+     Q \ar[dd]_{id} & \subseteq & Q(\sqrt[3]{2})\ar[ddll]_{\rho_{1}} & \subseteq & Q(\sqrt[3]{2})(\sqrt[3]{2}\omega)\ar[ddllll]_{\rho_{2}} & \subseteq & Q(\sqrt[3]{2},\sqrt[3]{2}\omega)(\sqrt[3]{2}\omega^{2})\ar[ddllllll]_{\rho_{3}} \\
+     & & & & & & \\
+    C & & & & & &
+    }\par
+因为$\sqrt[3]{2}$在$Q$上的极小多项式为$p_{1}(x)=x^{3}-2$。它在$C$上有三个根，所以$\rho_{1}$有三种选择。\par
+假设$\rho_{1}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2}\omega$，$\sqrt[3]{2}\omega$的一个零化多项式为$p_{2}(x)=\frac{x^{3}-2}{x-\sqrt[3]{2}}=x^{2}+\sqrt[3]{2}x+(\sqrt[3]{2})^{2}$，而$p_{2}(x)$的判别式小于零，在实数域上是不可约的，所以在实数域的子域$Q(\sqrt[3]{2})$上也是不可约的，即$p_{2}(x)$为$\sqrt[3]{2}\omega$在$Q(\sqrt[3]{2})$上的极小多项式，那么\\
+\centerline{$\rho_{1}(p_{2}(x))=x^{2}+\sqrt[3]{2}\omega x+(\sqrt[3]{2}\omega)^{2}$}\\
+$\rho_{1}(p_{2}(x))$在复数域上有两个根$\sqrt[3]{2}$和$\sqrt[3]{2}\omega^{2}$，所以$\rho_{2}$有两种选择。\par
+再假设$\rho_{2}:\sqrt[3]{2}\omega \longrightarrow \sqrt[3]{2}\omega^{2}$，那么$\rho_{3}$就应该是$\rho_{3}:\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}$。事实上，当确定了$\rho_{1}$和$\rho_{2}$，也就确定了$\sqrt[3]{2}$和$\omega$的像，那么$\rho_{3}$就可以直接给出，或者说$\rho_{1}$和$\rho_{2}$都是$\rho_{3}$的限制，由于同态保持运算\\
+\centerline{$\rho_{3}(\sqrt[3]{2}\omega^{2})=\rho_{3}(\frac{(\sqrt[3]{2}\omega)^{2}}{\sqrt[3]{2}})
+=\frac{\rho_{2}((\sqrt[3]{2}\omega)^{2})}{\rho_{1}(\sqrt[3]{2})}=\sqrt[3]{2}$}\\
+最后我们会得到$6$个$\rho_{3}$。
+
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\chapter{Galois基本定理}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{自同构群}
+
+\begin{definition}$E/K$是域扩张（$K$的特征数为$0$，$E=K(\alpha_{1},\cdots ,\alpha_{s})$是有限代数扩张），若$\rho:E\longrightarrow E$是$K-\text{同态}$，称$\rho$是$E$的\textbf{$K-\text{同构}$}。
+\end{definition}
+所有$K-\text{同构}$做成的集合在映射复合运算下构成一个群，称为$E$的\textbf{自同构群}，记作$Aut(E/K)$。\par
+
+例：$E=Q(\sqrt[3]{2})$，$\sqrt[3]{2}$在$Q$上的极小多项式在$E$上只有一个根$\sqrt[3]{2}$。所以$E$ 的自同构群是平凡的，只有$id$。\par
+例：$E=Q(\sqrt{2})$，$\sqrt{2}$在$Q$上的极小多项式在$E$上有两个根，则$E$的自同构群中有两个元素。\par
+
+例：$E=Q(\sqrt[3]{2},\sqrt[3]{2}\omega,\sqrt[3]{2}\omega^{2})$，前面我们已经算过，它是$Q$上的不可约多项式$f(x)=x^{3}-2$ 的分裂域，$E$ 的自同构有$6$个。\\
+\centerline{$\rho_{1}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2},\sqrt[3]{2}\omega\longrightarrow \sqrt[3]{2}\omega,\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}\omega^{2}$}\\
+\centerline{$\rho_{2}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2},\sqrt[3]{2}\omega\longrightarrow \sqrt[3]{2}\omega^{2},\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}\omega$}\\
+\centerline{$\rho_{3}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2}\omega,\sqrt[3]{2}\omega\longrightarrow \sqrt[3]{2},\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}\omega^{2}$}\\
+\centerline{$\rho_{4}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2}\omega,\sqrt[3]{2}\omega\longrightarrow \sqrt[3]{2}\omega^{2},\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}$}\\
+\centerline{$\rho_{5}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2}\omega^{2},\sqrt[3]{2}\omega\longrightarrow \sqrt[3]{2},\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}\omega$}\\
+\centerline{$\rho_{6}:\sqrt[3]{2}\longrightarrow \sqrt[3]{2}\omega^{2},\sqrt[3]{2}\omega\longrightarrow \sqrt[3]{2}\omega,\sqrt[3]{2}\omega^{2}\longrightarrow \sqrt[3]{2}$}\par
+
+如果把$\sqrt[3]{2}$，$\sqrt[3]{2}\omega$，$\sqrt[3]{2}\omega^{2}$分别记为$1$，$2$，$3$。那么这些同构可以看作是根之间的对应。\\
+\centerline{$\rho_{1}:
+\left(
+  \begin{array}{ccc}
+    1 & 2 & 3 \\
+    1 & 2 & 3 \\
+  \end{array}
+\right)
+=(1)$,\hspace{1em}
+$\rho_{2}:
+\left(
+  \begin{array}{ccc}
+    1 & 2 & 3 \\
+    1 & 3 & 2 \\
+  \end{array}
+\right)
+=(23)$}\\
+\hspace*{1mm}
+\centerline{$\rho_{3}:
+\left(
+  \begin{array}{ccc}
+    1 & 2 & 3 \\
+    2 & 1 & 3 \\
+  \end{array}
+\right)
+=(12)$,\hspace{2mm}
+$\rho_{4}:
+\left(
+  \begin{array}{ccc}
+    1 & 2 & 3 \\
+    2 & 3 & 1 \\
+  \end{array}
+\right)
+=(123)$}\\
+\centerline{$\rho_{5}:
+\left(
+  \begin{array}{ccc}
+    1 & 2 & 3 \\
+    3 & 1 & 2 \\
+  \end{array}
+\right)
+=(132)$,
+$\rho_{6}:
+\left(
+  \begin{array}{ccc}
+    1 & 2 & 3 \\
+    3 & 2 & 1 \\
+  \end{array}
+\right)
+=(13)$}\\
+所以$E$的自同构群同构于$6$阶置换群$S_{3}$。
+
+\begin{lemma}$[E:K]$有限，则$[E:K]\geq |Aut(E/K)|$。
+\end{lemma}
+当$E$是$K$上关于多项式$f(x)$的分裂域时，等号成立。
+\begin{lemma}$E$是一个域，$G\triangleq \{\rho_{i}|\rho_{i}\text{是}E\text{到}E\text{的域同构},i=1,\cdots ,n\}$，且$G$在映射复合意义下构成一个群。$E^{G}=K\triangleq \{x\in E|\rho_{i}(x)=x,i=1,\cdots ,n\}$称为稳定子域，则$[E:K]\leq |G|$。 （$|G|$ 有限时，等号成立。）
+\end{lemma}
+证：任取$\alpha_{1},\cdots,\alpha_{m}\in E(m>n)$，下证存在$x_{1},\cdots,x_{m}\in K$不全为$0$，使得$x_{1}\alpha_{1}+\cdots +x_{m}\alpha_{m}=0$。\par
+考虑方程组$x_{1}\rho_{i}(\alpha_{1})+\cdots +x_{m}\rho_{i}(\alpha_{m})=0.i=1,2,\cdots ,n$。 因为未知数个数大于方程个数，所以方程组在$E$上有非零解。注意到方程组在$E$中的解有如下性质：\par
+\begin{enumerate}
+  \item 解构成一个线性空间$W$。
+  \item $x=(a_{1},\cdots,a_{m})\in W$，则$(\rho_{j}(a_{1}),\cdots,\rho_{j}(a_{m}))\in W,j=1,\cdots,n$。
+\end{enumerate}\par
+性质$1$显然成立，对于性质$2$\\
+\centerline{$a_{1}\rho_{i}(\alpha_{1})+\cdots +a_{m}\rho_{i}(\alpha_{m})=0$}\\
+\centerline{$\rho_{j}(a_{1})\rho_{j}\rho_{i}(\alpha_{1})+\cdots +\rho_{j}(a_{m})\rho_{j}\rho_{i}(\alpha_{m})=0$}\par
+因为$\rho_{i}$是$E$的自同构，所以$\rho_{j}\rho_{i}(\alpha_{1}),\cdots ,\rho_{j}\rho_{i}(\alpha_{m})$是$\alpha_{1},\cdots,\alpha_{m}$的一个排列，一定存在$\rho_{k}=\rho_{j}\rho_{i}$，使\\
+\centerline{$\rho_{j}(a_{1})\rho_{k}(\alpha_{1})+\cdots +\rho_{j}(a_{m})\rho_{k}(\alpha_{m})=0$}\\
+由于群$G$的运算封闭，当$i$取遍$1$到$n$时，$k$也能取遍$1$到$n$。即$(\rho_{j}(a_{1}),\cdots,\rho_{j}(a_{m}))$也是方程组的解。\par
+取$x_{1}\alpha_{1}+\cdots +x_{m}\alpha_{m}=0$在$E$上的一个非零解$x_{0}=(a_{1},\cdots,a_{m})\in W_{0}$。若$a_{1}\in K$，则判断$a_{2}$，若$a_{1}\notin K$，用$a_{1}$的逆元素把$a_{1}$变成$1$；若$a_{2}\in K$，则判断$a_{3}$，若$a_{2}\notin K$，则存在$\rho_{t}(a_{2})\neq a_{2}$，令$x_{0}^{\prime}=x_{0}-\rho_{t}(x_{0})=(0,a_{2}^{\prime},\cdots,a_{m}^{\prime})$。 若$a_{2}^{\prime}\notin K$，把$a_{2}^{\prime}$变成$1$，这样依次进行下去，最后得到的$\bar{x}_{0}\in K$（注：$0,1\in K$）。\par
+综上，存在$x_{1},\cdots,x_{m}\in K$不全为$0$，使得$x_{1}\alpha_{1}+\cdots +x_{m}\alpha_{m}=0$。 即任意大于$n$个元素都是线性相关的，所以$[E:K]\leq |G|$。
+\begin{corollary}若$\alpha_{1},\cdots,\alpha_{n}$是$E/K$的一组基，则\\
+\centerline{$\text{det}
+\left(
+     \begin{array}{cccc}
+       \rho_{1}(\alpha_{1}) & \rho_{1}(\alpha_{2}) & \cdots & \rho_{1}(\alpha_{n}) \\
+       \rho_{2}(\alpha_{1}) & \rho_{2}(\alpha_{2}) & \cdots & \rho_{2}(\alpha_{n}) \\
+       \vdots & \vdots & \ddots & \vdots \\
+       \rho_{n}(\alpha_{1}) & \rho_{n}(\alpha_{2}) & \cdots & \rho_{n}(\alpha_{n}) \\
+     \end{array}
+   \right)
+   \neq 0$}
+\end{corollary}
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{Galois基本定理}
+\begin{definition}设$K$是一个域，$E/K$是有限扩张，若$K$是$E$的$K-$自同构群的稳定子域，即$K=E^{Aut(E/K)}$，则称$E/K$为\textbf{Galois扩张}。这时群$Aut(E/K)$叫做\textbf{Galois群}，记作$Gal(E/K)$。
+\end{definition}
+\begin{definition}设$E$是$K$的一个有限扩张，如果$K$上的一个不可约多项式在$E$中有一个根时，它在$E$上就能完全分解成一次因式的乘积，则称$E$是$K$ 的\textbf{正规扩张}。
+\end{definition}
+
+\begin{theorem}域$K$的特征是$0$，$E/K$是有限扩张，则以下叙述等价：\par
+$(1)$ $E$是$K$上关于$f(x)$的分裂域。\par
+$(2)$ $E/K$是Galois扩张。\par
+$(3)$ $E$是$K$上的正规扩张。
+\end{theorem}
+
+\begin{corollary}$K\subseteq M\subseteq E$为域扩张。若$E/K$是Galois扩张，则$E/M$也是Galois扩张。
+\end{corollary}
+证：由定理$4.7$可知，$E$为$K$上的某个多项式$f(x)$的分裂域，因为$M$为$K$的扩域，作为$M$上的多项式，$f(x)$在$E$上也能分解成一次因式的乘积，即$E$为$M$上$f(x)$的分裂域，则$E/M$是Galois扩张。
+
+\begin{corollary}域$K$的特征是$0$，$E/K$是有限扩张，总是存在一个$K$上的分裂域$L$，使得$K\subseteq E\subseteq L$。
+\end{corollary}
+证：令$E=K(\alpha_{1},\cdots,\alpha_{m})$。$\alpha_{i}$ 在$K$上的极小多项式为$f_{i}(x)$，取$L$为$K$上关于$\prod\limits_{i=1}^{m}f_{i}(x)$的分裂域，显然$L$为$K$的扩域。
+
+\begin{theorem}（Galois基本定理）设$E/K$是Galois 扩张\par
+$(1)$ $K\subseteq M\subseteq E$，$M$为中间域，则存在映射$\rho:M\longmapsto Gal(E/M)$，其中$Gal(E/M)$为$Gal(E/K)$的子群。\par
+$(2)$ $H$为$Gal(E/K)$的子群，则$E^{H}$是中间域，即存在映射$\sigma:H\longmapsto E^{H}$，使$K\subseteq E^{H}\subseteq E$。\par
+$(3)$ $\rho$与$\sigma$互逆。\par
+$(4)$ $K\subseteq M\subseteq E$，$M/K$是Galois扩张$\Longleftrightarrow Gal(E/M)\lhd Gal(E/K)$，且$Gal(M/K)\cong Gal(E/K)/Gal(E/M)$。
+\end{theorem}
+证：这里先不给出$(4)$的证明。\par
+$(1)$ $M$为中间域，由推论$4.8$，$E/M$也为Galois 扩张，即有$M=E^{Gal(E/M)}$。\par
+$(2)$ $H\subseteq Gal(E/K)\Longrightarrow E^{Gal(E/K)}\subseteq E^{H}$，而$E^{Gal(E/K)}=K$，所以$E^{H}$为$K\subseteq E$ 的中间域。\par
+$(3)$ $\sigma\rho:M\longmapsto H=Gal(E/M)\longmapsto E^{H}$，往证$M=E^{H}$。显然有$M\subseteq E^{H}$，对于域扩张$K\subseteq M\subseteq E^{H}\subseteq E$，$H=Gal(E/E^{H})$，已知$H=Gal(E/M)$，则$M\subseteq E^{H}$为一次扩张，即$M=E^{H}$。\par
+$\rho\sigma:H\longmapsto M=E^{H}\longmapsto Gal(E/M)$，而$H=Gal(E/E^{H})=Gal(E/M)$。\par
+故$\sigma\rho=\rho\sigma=1$。
+
+\begin{proposition}$E/K$是有限扩张，$K$的特征是$0$，则存在$\alpha\in E$，使$E=K(\alpha)$。
+\end{proposition}
+证：由Galois基本定理可知，Galois扩张的中间域与Galois群的子群之间有一一对应的关系。若$E/K$不是Galois扩张，由推论$4.9$，存在一个分裂域$L$使$L/K$为Galois扩张，$Gal(E/K)$是有限群，则$L\supseteq K$的中间域为有限个，而$K$作为$L$的子域，$E\supseteq K$的中间域也为有限个。\par
+设$M_{i}(i=1,\cdots,m)$为$E\supseteq K$的所有中间域，$M_{i}$与$E$作为$K$上的线性空间，有$\bigcup\limits_{i=1}^{m}M_{i}\neq E$，存在$\alpha\in E$且$\alpha\notin M_{i}$，故$E=K(\alpha)$。因为$K(\alpha)\neq K$，且$K(\alpha)$不等于所有的中间域。
+
+
+\renewcommand{\baselinestretch}{1.25}
+\chapter{有限群}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+\renewcommand{\baselinestretch}{1.25}\large
+\section{群}
+\begin{definition}一个非空集合$G$与$G$上的一个叫做乘法的二元运算$"\cdot"$，假如：\par
+$(1)$ $G$对乘法运算是封闭的，即$\forall a,b\in G$，$a\cdot b\in G$，\par
+$(2)$ 乘法$"\cdot"$满足结合律，即对于$\forall a,b,c\in G$，$(a\cdot b)\cdot c=a\cdot(b\cdot c)$，\par
+$(3)$ 有单位元$e$，即$\forall a\in G$，$a\cdot e=e\cdot a=a$，\par
+$(4)$ 有逆元，即$\forall a\in G$，$\exists b\in G$，使$a\cdot b=b\cdot a=e$，\\
+则称$(G,\cdot)$为\textbf{群}。
+\end{definition}
+
+集合$X$上所有双射构成的集合，在映射复合运算下构成一个群，若$X$中含有$n$个元素，我们记这个群为$S_{n}$，称为置换群。\par
+\begin{definition}我们称群$G$所含元素的个数为\textbf{群$G$的阶}，记为$|G|$。若$|G|=n<+\infty$，称$G$是$n$阶有限群，否则称$G$为无限群。
+\end{definition}
+显然，$|S_{n}|=n!$。
+\begin{definition}$\forall a\in G$，使得$a^{m}=e$的最小正整数$m$叫做\textbf{元素$a$的阶}。
+\end{definition}
+规定单位元的阶为$0$。
+\begin{definition}群$G$的一个子集$H$叫做$G$的一个\textbf{子群}，假如$H$对于$G$的运算做成一个群。
+\end{definition}
+$H$是$G$的子群，若$\alpha \in H$，则$\alpha^{i}\in H$，且$\{e,\alpha^{\pm 1},\alpha^{\pm 2},\cdots\}$是$G$中包含$\alpha$的最小子群。$\alpha$的阶等于由$\alpha$生成的子群$<a>$的阶。\par
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{正规子群与商群}
+
+我们看一个群$G$和群$G$的一个子群$H$，规定一个$G$ 中元素之间的关系$\thicksim$：\\
+\centerline{$a\thicksim b$，当且仅当$ab^{-1}\in H$}\par
+$1.$ $aa^{-1}=e\in H$，所以\\
+\centerline{$a\thicksim a$}\par
+$2.$ $ab^{-1}\in H\Rightarrow (ab^{-1})^{-1}=ba^{-1}\in H$，所以\\
+\centerline{$a\thicksim b\Rightarrow b\thicksim a$}\par
+$3.$ $ab^{-1}\in H,bc^{-1}\in H\Rightarrow (ab^{-1})(bc^{-1})=ac^{-1}\in H$，所以\\
+\centerline{$a\thicksim b,b\thicksim c\Rightarrow a\thicksim c$}\par
+这样可知，$\thicksim$是一个等价关系。利用这个等价关系，我们可以得到$G$的一个分类。
+\begin{definition}由等价关系$\thicksim$决定的类叫做子群$H$的\textbf{右陪集}。包含元素$a$的右陪集用$Ha$表示。
+\end{definition}
+例：$G=S_{3}=\{(1),(12),(13),(23),(123),(132)\}$，$H=\{(1),(12)\}$ \\
+那么
+\begin{equation}
+\left.
+\begin{aligned}
+&H(1)=\{(1),(12)\}\nonumber\\
+&H(13)=\{(13),(123)\}\nonumber\\
+&H(23)=\{(23),(132)\}\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+子群$H$把群$G$分成$H(1)$，$H(13)$，$H(23)$三个不同的右陪集。\par
+
+假如我们定义的关系为$\thicksim^{\prime}$：\\
+\centerline{$a\thicksim^{\prime} b$，当且仅当$b^{-1}a\in H$}\\
+那么$\thicksim^{\prime}$也是一个等价关系，也决定了一个群$G$的分类。
+\begin{definition}由等价关系$\thicksim^{\prime}$ 决定的类叫做子群$H$的\textbf{左陪集}。包含元素$a$的左陪集用$aH$表示。
+\end{definition}
+例：前面例题中$H$的左陪集为
+\begin{equation}
+\left.
+\begin{aligned}
+&(1)H=\{(1),(12)\}\nonumber\\
+&(13)H=\{(13),(132)\}\nonumber\\
+&(23)H=\{(23),(123)\}\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+可以看出$H$的左右陪集是不相同的。\par
+同一子群的陪集可能不相同，但是左右陪集的个数一定是相等的。
+\begin{definition}群$G$的一个子群$H$的右陪集（或左陪集）的个数叫做$H$在$G$里的\textbf{指数}，记作$|G:H|$。
+\end{definition}
+那么我们会有以下定理。
+\begin{theorem}（Lagrange定理）设$G$是有限群，$H$是$G$的子群。则\\
+\centerline{$|G|=|G:H||H|$}
+\end{theorem}
+\begin{corollary}有限群$G$的任一元素$a$的阶$n$都能整除$G$的阶。
+\end{corollary}
+证：阶为$n$的元素会生成一个$n$阶子群，由Lagrange 定理，$n$可以整除$G$的阶。\par
+
+
+\begin{definition}设$H$是群$G$的子群，若对$\forall a\in G$都有$aH=Ha$，则称$H$是$G$的\textbf{正规子群}，记作$H\lhd G$。
+\end{definition}
+例：$G$与$\{e\}$是群$G$的正规子群，它们是平凡的正规子群。
+\begin{definition}如果群$G$的正规子群只有$G$和$\{e\}$，则称$G$为\textbf{单群}。
+\end{definition}
+\begin{remark}所谓$aH=Ha$，并不是说$a$可以和$H$ 的每一个元素可交换，而是$aH$和$Ha$这两个集合一样。
+\end{remark}
+\begin{theorem}设$H$是群$G$的子群，则下列条件等价：\par
+$(1)$ $H$是$G$的正规子群，\par
+$(2)$ $gHg^{-1}=H$，$\forall g\in G$，\par
+$(3)$ $gHg^{-1}\subseteq H$，$\forall g\in G$，\par
+$(4)$ $ghg^{-1}\in H$，$\forall g\in G$，$\forall h\in H$。
+\end{theorem}
+例：交换群的子群都是正规子群。\par
+例：与群$G$所有元素可交换的元素组成的集合$C(G)$，叫做群$G$的中心。$C(G)$是$G$的正规子群。\par
+
+设$H$是群$G$的一个正规子群，把$H$的陪集做成一个集合\\
+\centerline{$\{aH,bH,cH,\cdots\}$}\par
+规定运算，$\forall x,y\in G$，$(xH)(yH)=(xy)H$。\par
+下面验证运算定义的合理性，即运算结果与代表元素$x,y$的选择无关。\par
+若\\
+\centerline{$xH=x^{\prime}H$，$yH=y^{\prime}H$}\\
+那么\\
+\centerline{$x=x^{\prime}h_{1}$，$y=y^{\prime}h_{2}$，$(h_{1},h_{2}\in H)$}\\
+\centerline{$xy=x^{\prime}h_{1}y^{\prime}h_{2}$}\\
+由于$H$是正规子群，\\
+\centerline{$h_{1}y^{\prime}\in Hy^{\prime}=y^{\prime}H$}\\
+\centerline{$h_{1}y^{\prime}=y^{\prime}h_{3},(h_{3}\in H)$}\\
+则\\
+\centerline{$xy=x^{\prime}y^{\prime}(h_{3}h_{2})$}\\
+\centerline{$xy\in x^{\prime}y^{\prime}H$}\\
+所以\\
+\centerline{$xyH=x^{\prime}y^{\prime}H$}\par
+
+$H$的陪集构成的集合在上述运算下构成一个群。\par
+$(1)$ 运算封闭性显然。\par
+$(2)$ $\forall x,y,z\in G$，\\
+\centerline{$(xHyH)zH=(xy)HzH=(xyz)H$}\\
+\centerline{$xH(yHzH)=xH(yz)H=(xyz)H$}\par
+$(3)$ $eHxH=xHeH=xH$\par
+$(4)$ $(x^{-1})HxH=(x^{-1}x)H=eH$\par
+
+\begin{definition}群$G$的一个正规子群$H$的陪集所做成的群叫做$G$关于$H$的\textbf{商群}，记作$G/H$。
+\end{definition}
+
+\begin{theorem}群同态基本定理：\par
+$(1)$ $N\lhd G$，则$\pi:G\longrightarrow G/N(\pi:h\longmapsto hN)$是群同态。\par
+$(2)$ $\rho:G\longrightarrow H$是群同态，则$ker\rho\lhd G$，且$G/ker\rho\cong Im\rho$，即存在唯一的$\bar{\rho}:G/ker\rho\longrightarrow Im\rho$，使得$\rho=\bar{\rho}\circ\pi$。\\
+\centerline{
+\xymatrix@C=2ex{
+    G\ar[d]_{\pi}\ar[r]^{\rho} & Im\rho & \subseteq & H  \\
+    G/ker\rho\ar[ur]_{\bar{\rho}} & & &
+    }
+    }\par
+$(3)$ $N\lhd G$，则$G/N$的子群与$N$，$G$的中间子群一一对应，且正规子群与正规子群对应。
+\end{theorem}
+证：$(1)$ 显然$\pi$是一个很自然的同态。\par
+$(2)$ 先证$ker\rho$是$G$的正规子群。$\forall a,b\in ker\rho$，$\rho(ab^{-1})=\rho(a)\rho(b^{-1})=e_{H}e_{H}^{-1}=e_{H}$，$ab^{-1}\in ker\rho$，所以$ker\rho$是$G$的一个子群。$\forall a\in ker\rho$，$\forall g\in G$，$\rho(gag^{-1})=\rho(g)e_{H}\rho(g^{-1})=\rho(gg^{-1})=e_{H}$，则$gag^{-1}\in ker\rho$，那么$ker\rho$就是$G$的正规子群。\par
+定义$\bar{\rho}:g\cdot ker\rho\longmapsto \rho(g)$。\par
+首先，对$\forall x,y\in G$，若$x\cdot ker\rho=y\cdot ker\rho$，$\exists h\in ker\rho$，使$x=yh$。那么$\rho(x)=\rho(yh)=\rho(y)\rho(h)=\rho(y)\cdot e_{H}=\rho(y)$，即$\bar{\rho}(x\cdot ker\rho)=\bar{\rho}(y\cdot ker\rho)$，所以$\bar{\rho}$是$G/ker\rho$到$H$的映射。\par
+其次，$\forall x,y\in G$，$\bar{\rho}(xker\rho\cdot yker\rho)=\bar{\rho}(xyker\rho)=\rho(xy)=\rho(x)\rho(y)=\bar{\rho}(xker\rho)\bar{\rho}(yker\rho)$。 所以$\bar{\rho}$是群同态。\par
+然后，$\forall x\cdot ker\rho\in ker\bar{\rho}$，$e_{H}=\bar{\rho}(xker\rho)=\rho(x)$，则$x\in ker\rho$，即$xker\rho=ker\rho$是商群$G/ker\rho$的单位元，这就是说，$\bar{\rho}$是单同态，所以$\bar{\rho}$是同构。\par
+最后，$\forall g\in G$，$\bar{\rho}\pi(g)=\bar{\rho}(gker\rho)=\rho(g)$，即$\bar{\rho}\pi=\rho$。\par
+\vspace{2ex}
+\textbf{循环群结构定理}\par
+
+设$G$是一个群，$\forall g\in G$，$<g>=\{e,g^{\pm1},g^{\pm2},\cdots\}$。
+\begin{definition}若$\exists g\in G$，使$G=<g>$，则称$G$为\textbf{循环群}。
+\end{definition}
+循环群$G=<g>$与整数群$Z$之间存在自然同态$\rho$，使$\rho(n)=g^{n}$，$n\in Z$。由同态基本定理，\\
+\centerline{$Z/ker\rho\cong Im\rho=G$}\\
+即循环群同构于整数群的商群。\par
+当$G$是无限群时，$ker\rho=\{0\}$，即$G\cong Z$。 当$G$是有限群时，$\exists n\in Z^{+}$，使$g^{n}=e$，$ker\rho=\{nZ|n\in Z^{+}\}$，则$G\cong Z/nZ$。\par
+
+整数群$Z$的所有子群都形如$\{nZ|n\in Z^{+}\}$。事实上，若$H$是$Z$的子群，取$H$中最小正整数$a$，则$aZ$是$Z$的子群，若存在$b\in H$且$b\notin aZ$，有$b=ka+r$，$0<r<a$，与$a$是$H$中最小正整数矛盾。\par
+
+设$G$是$n$阶循环群，则$G\cong Z/nZ$。由同态基本定理，$G$的子群与$Z$中包含$aZ$的子群一一对应。若$n^{\prime}Z$为$Z$中包含$nZ$的子群，则$n^{\prime}|n$。所以，对$\forall d|n$，$G$的$d$ 阶子群存在，而且只有一个。\par
+\vspace{2ex}
+下面我们来看一下$S_{n}$。\par
+$S_{n}=\{\sigma|\sigma\text{是}\{1,2,\cdots ,n\}\text{上的双射}\}$。
+$\forall \sigma,\tau\in S_{n}$，$\sigma\tau(x)\triangleq\sigma(\tau(x))$。\par
+$S_{n}$中的元素有三种表示：\par
+$1.$ 置换表示\\
+\centerline{$
+\left(
+  \begin{array}{cccc}
+    1 & 2 & \cdots & n \\
+    \sigma(1) & \sigma(2) & \cdots & \sigma(n) \\
+  \end{array}
+\right)
+$} \par
+
+$2.$ 轮换表示：$(i_{1}i_{2}\cdots i_{t})(j_{1}j_{2}\cdots j_{s})\cdots $\par
+$\sigma(i_{k})=i_{k+1}$，$1\leq k\leq t-1$，$\sigma(i_{t})=i_{1}$，$\sigma(j_{k})=j_{k+1}$，$1\leq k\leq s-1$，$\sigma(j_{s})=j_{1}$等等\par
+
+$3.$ 对换表示\par
+$S_{n}$中每一个元素$\sigma$都可以写成若干个对换的合成。若有奇数个对换，称$\sigma$为奇置换；若有偶数个对换，称$\sigma$为偶置换。所有的偶置换构成一个群，叫做交错群，记作$A_{n}$。
+
+例：$\left(
+    \begin{array}{ccccc}
+      1 & 2 & 3 & 4 & 5 \\
+      3 & 5 & 4 & 1 & 2 \\
+    \end{array}
+  \right)=(134)(25)=(14)(13)(25).$
+
+
+\begin{definition}群$G$中的两个元素$a,b$\textbf{共轭}，如果存在$G$中的元素$g$，满足$gag^{-1}=b$。
+\end{definition}
+
+群$G$中元素的共轭关系是一个等价关系，决定了$G$的一个分类，所有与$g$共轭的元素构成$g$的共轭类。
+
+\begin{proposition}设$\sigma=(a_{1}a_{2}\cdots a_{t})\in S_{n}$，对$\forall \tau\in S_{n}$，有\\
+\centerline{$\tau\sigma\tau^{-1}=(\tau(a_{1})\tau(a_{2})\cdots \tau(a_{t}))$}
+\end{proposition}
+
+证：若$1\leq j<t$，$\tau\sigma\tau^{-1}(\tau(a_{j}))=\tau\sigma(a_{j})=\tau(a_{j+1})$，
+$\tau\sigma\tau^{-1}(\tau(a_{t}))=\tau\sigma(a_{t})=\tau(a_{1})$。 若$l\in \{1,2,\cdots,n\}\backslash \{\tau(a_{1}),\tau(a_{2}),\cdots ,\tau(a_{t})\}$，$\tau^{-1}(l)\notin \{a_{1},a_{2},\cdots ,a_{t}\}$，$\tau\sigma\tau^{-1}(l)=\tau\sigma(\tau^{-1}(l))=\tau\tau^{-1}(l)=l$。
+
+\begin{corollary}$\forall g,h\in S_{n}$，$g$与$h$共轭$\Longleftrightarrow$ $g$与$h$的轮换类型一致。
+\end{corollary}
+
+由定理$5.13$可知，正规子群一定是若干共轭类的并。\par
+\vspace{2ex}
+$S_{3}$只有$6$个元素，$3$个共轭类，它的非平凡正规子群只有$A_{3}=\{(1),(123),(132)\}$。\par
+$S_{4}$的情况稍复杂一点，它有$24$个元素，$5$个共轭类，
+\begin{equation}
+\left\{
+\begin{aligned}
+&(1)\nonumber\\
+&(12),(13),(14),(23),(24),(34)\nonumber\\
+&(123),(124),(134),(234),(132),(142),(143),(243)\nonumber\\
+&(1234),(1243),(1324),(1342),(1423),(1432)\nonumber\\
+&(12)(34),(13)(24),(14)(23)\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+
+$S_{4}$的非平凡正规子群的阶一定是$24$的因子，而且正规子群中一定含有$(1)$，根据群的阶就能排除很多共轭类的组合情况。经验证，$S_{4}$的非平凡正规子群只有$4$阶的和$12$阶的。\\
+\centerline{$K_{4}=\{(1),(12)(34),(13)(24),(14)(23)\}$}
+\begin{equation}
+\left.
+\begin{aligned}
+A_{4}=&\{(1),(12)(34),(13)(24),(14)(23),(123),(124),\nonumber\\
+&(134),(234),(132),(142),(143),(243)\}\nonumber\\
+\end{aligned}
+\right.
+\end{equation}\par
+那么在$S_{4}$，$S_{3}$之间存在满同态$f:S_{4}\longrightarrow S_{3}$\\
+\centerline{$S_{4}/kerf\cong S_{3}$}\\
+则$kerf=K_{4}$。\par
+
+商群$S_{4}/K_{4}$中的元素为：
+\begin{equation}
+\left\{
+\begin{aligned}
+&(1)K_{4}=\{(1),(12)(34),(13)(24),(14)(23)\} \nonumber\\
+&(12)K_{4}=\{(12),(34),(1423),(1324)\}\nonumber\\
+&(13)K_{4}=\{(13),(24),(1432),(1234)\}\nonumber\\
+&(23)K_{4}=\{(23),(14),(1243),(1342)\}\nonumber\\
+&(123)K_{4}=\{(123),(243),(142),(134)\}\nonumber\\
+&(132)K_{4}=\{(132),(234),(124),(143)\}\nonumber\\
+\end{aligned}
+\right.
+\end{equation}
+那么$f:aK_{4}\longrightarrow a$，显然是一个$S_{4}$到$S_{3}$的满同态。
+
+\begin{proposition}$A_{n}(n\geq 5)$的单群。
+\end{proposition}
+证：我们要证明$A_{n}$是单群，需要证明若$\{(1)\}\neq N\lhd A_{n}$，则$N=A_{n}$。\par
+$(1)$ $A_{n}$可由所有$3$轮换生成。设$(1)\neq \sigma\in A_{n}$，因为$\sigma$是偶置换，$\sigma$ 可写成偶数个对换的乘积，对于任意两个不同的对换乘积，我们有\\
+\centerline{$(ij)(jk)=(ijk)$}\\
+\centerline{$(ij)(kl)=(ij)(jk)(jk)(kl)=(ijk)(jkl)$}\\
+所以$\sigma$可以表示成若干$3$轮换的乘积。\par
+
+$(2)$ 设$(1)\neq \sigma\in N$是$N$中变动$\{1,2,\cdots,n\}$中元素最少的元素，则$\sigma$一定是$3$轮换。\par
+若$\sigma$的轮换表示是$2$个对换的乘积。不妨设$\sigma=(12)(34)$，取$\tau=(345)$，则$\sigma^{-1}\tau\sigma\tau^{-1}=(345)\in N$，与$\sigma$的选取相矛盾。\par
+若$\sigma$的轮换表示是更多个对换的乘积。不妨设$\sigma=(12)(34)(56)\cdots$，取$\tau=(123)$，则$\sigma^{-1}\tau\sigma\tau^{-1}=(13)(24)\in N$，与$\sigma$的选取相矛盾。\par
+所以$\sigma$的最长轮换部分的长度$\geq 3$。把最长的轮换写在前面，若$\sigma$不是$3$轮换，则$\sigma$有如下形状：\par
+$(a)$ $\sigma=(123)(45)\cdots$ \par
+$(b)$ $\sigma=(123)(456)\cdots$ \par
+$(c)$ $\sigma=(1234\cdots)\cdots$ \\
+因为$\sigma$是偶置换，$(a)(b)$中变动的元素个数$\geq 6$，若个数$<6$，$\sigma=(123)(45)$不是偶置换。$(c)$中变动元素个数$\geq 5$。\par
+对于$(a)$，取$\tau=(234)$，则$\sigma^{-1}\tau\sigma\tau^{-1}=(12435)\in N$，与$\sigma$的选取矛盾。对于$(b)$，取$\tau=(245)$，则$\sigma^{-1}\tau\sigma\tau^{-1}=(16425)\in N$，与$\sigma$的选取矛盾。对于$(c)$，取$\tau=(243)$，则$\sigma^{-1}\tau\sigma\tau^{-1}=(134)\in N$，与$\sigma$的选取矛盾。\par
+因此，$\sigma$一定是$3$轮换。\par
+
+$(3)$ $N$包含所有的$3$轮换。因为$N$是$A_{n}$的正规子群，所以$N$包含$3$轮换的共轭类，也就是所有的$3$轮换。\par
+
+综上，$N=A_{n}$，所以$A_{n}$是单群。\par
+
+\begin{proposition}$S_{n}(n\geq 5)$的非平凡正规子群只有$A_{n}$。
+\end{proposition}
+证：设$A_{n}\lhd S_{n}$，$M\lhd S_{n}$，且$M\neq \{(1)\}\text{或}S_{n}$，只需证明$M=A_{n}$。\par
+因为$M\lhd S_{n}$，则$M\cap A_{n}\lhd A_{n}$，而$A_{n}$是单群，$M\cap A_{n}=\{(1)\}\text{或}A_{n}$。若$M\cap A_{n}=\{(1)\}$，则$M=\{(1)\}$。因为如果$M$中有奇置换，至少会包含奇置换的一个共轭类，任意两个元素的乘积也在$M$中，而两个奇置换的乘积是偶置换，则$M\cap A_{n}$中还会有其他元素。若$M\cap A_{n}=A_{n}$，则$A_{n}$是$M$的子群，$|A_{n}|=\frac{n!}{2}$，那么$\frac{n!}{2}\leq |M|<n!$，只能$M=A_{n}$。所以$S_{n}$的非平凡正规子群只有$A_{n}$。\par
+
+\vspace{4ex}
+
+在对群论有了一些了解之后，下面我们给出Galois基本定理中$(4)$的证明。\par
+$(4)$ $K\subseteq M\subseteq E$，$M/K$是Galois扩张$\Longleftrightarrow$ $Gal(E/M)\lhd Gal(E/K)$，且$Gal(M/K)\cong Gal(E/K)/Gal(E/M)$。\par
+证：$"\Longrightarrow"$ 设$H=Gal(E/M)\lhd Gal(E/K)$，则$E^{H}=M$，取$\alpha\in E^{H}$，$\alpha$在$K$ 上的极小多项式为$p(x)$，$p(x)$在$E$上有$s$个根$\alpha=x_{1},\cdots,x_{s}$。对于$x_{i}(2\leq i\leq s)$，一定存在$g\in Gal(E/K)$，使得$x_{i}=g(x_{1})$，那么$h(x_{i})=h(g(x_{1}))$，由于$H$为$Gal(E/K)$的正规子群，$\exists h^{\prime}\in H$，使$hg=gh^{\prime}$，则$h(x_{i})=hg(x_{1})=g(h^{\prime}(x_{1}))=g(x_{1})=x_{i}$，所以$x_{i}\in E^{H}$，即所有的根都在$E^{H}$中，$E^{H}/K$为正规扩张，由定理$4.7$，$E^{H}/K$为Galois扩张。\par
+
+$"\Longleftarrow"$ 若$M/K$是Galois扩张，设$H=Gal(E/M)$。\\ 由于$M/K$是Galois扩张，$\forall \alpha\in M$，$M$包含$\alpha$ 在$K$上的极小多项式的所有根，所以$\forall g\in G$，$g(\alpha)\in M$。$\forall h\in H$，$ghg^{-1}(\alpha)=gh(g^{-1}(\alpha))=gg^{-1}(\alpha)=\alpha$。则$\alpha\in E^{gHg^{-1}}$，那么$M\subseteq E^{gHg^{-1}}$，而$M=E^{H}$，可得$gHg^{-1}\subseteq H$，所以$H$为$Gal(E/K)$的正规子群。\par
+
+另外，存在一个$Gal(E/K)$到$Gal(M/K)$群同态$\rho:g\longmapsto g|_{M}$，由同态基本定理\\
+\centerline{$Gal(E/K)/ker\rho \cong Im\rho$}\\
+$M$是$E$的子域，$\rho$一定是满同态，则$Im\rho=Gal(M/K)$，而$ker\rho$中的元素就是在$E$ 上保持$M$不动的自同构，也就是$Gal(E/M)$，所以有$Gal(M/K)\cong Gal(E/K)/Gal(E/M)$。\par
+
+\begin{remark}在Galois理论中，存在一个群链与域链反向的对应关系\\
+\centerline{
+\xymatrix@C=2ex{
+    E_{0}\ar[d] & \subseteq & E_{1}\ar[d] & \subseteq & \cdots & \subseteq & E\ar[d]  \\
+    G_{n} & > & G_{n-1} & > & \cdots & > & \{id\}
+    }
+}\\
+越大的域对应的Galois群就越小，这是显然的事情，域对应的Galois群是保持域中元素不动的自同构，域越大，在自同构下不动的元素就越多，而这样的自同构也就越少。
+\end{remark}
+
+
+
+\renewcommand{\baselinestretch}{1.25}
+\chapter{Galois群的计算}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+
+先介绍一下群作用。
+\begin{definition}$G$是一个群，$\Omega$是一个非空集合，群$G$在$\Omega$上的一个\textbf{作用}是指$G$到$S_{\Omega}$的一个同态。$\forall g\in G$，$\rho(g)$是$\Omega$到$\Omega$的双射。
+\end{definition}
+
+\begin{definition}设群$G$作用在集合$\Omega$上，则对每个$\alpha\in \Omega$，\\
+\centerline{$G_{\alpha}=\{g\in G|g(\alpha)=\alpha\}$}\\
+是$G$的子群，叫做$\alpha$的\textbf{稳定子群}。
+\end{definition}
+
+\begin{definition}设群$G$作用在集合$\Omega$上，$x,y\in \Omega$称为\textbf{等价}的，如果存在$g\in G$，使$g(x)=y$。容易验证这是一个等价关系，每一个等价类叫做$G$在$\Omega$上的一个\textbf{轨道}（传递集）。记$G(\alpha)=\{g(\alpha)|g\in G\}$为$\alpha$ 所在的轨道。如果$G$在$\Omega$上只有一个轨道，则称$G$在$\Omega$上的作用是\textbf{传递的}。
+\end{definition}
+
+\begin{theorem}设有限群$G$作用在有限集合$\Omega$ 上，$\alpha\in \Omega$，则\\
+\centerline{$|G(\alpha)|=|G:G_{\alpha}|$}
+\end{theorem}
+证：对于$\forall g,h\in G$\\
+\centerline{$g(\alpha)=h(\alpha)\Longleftrightarrow g^{-1}h(\alpha)=\alpha\Longleftrightarrow g^{-1}h\in G_{\alpha}\Longleftrightarrow hG_{\alpha}=gG_{\alpha}$}\\
+则存在一个从$G_{\alpha}$的左陪集集合到轨道集合的双射$f:gG_{\alpha}\longmapsto g(\alpha)$，所以$|G(\alpha)|=|G:G_{\alpha}|$。\par
+
+\vspace{6ex}
+
+设$K$是一个域，$K$的特征为$0$，$f(x)\in K[x]$，$E$是$K$上关于$f(x)$的分裂域，$G_{f}\triangleq G=Gal(E/K)$，为了叙述方便，假定$f(x)$没有重根。\par
+
+$f(x)$在$E$上的$n$个不同的根为$\alpha_{1},\cdots,\alpha_{n}$，$\forall g\in G_{f}$，$g$为$\{\alpha_{1},\cdots,\alpha_{n}\}$\\ 上的双射，存在同态$\rho:G_{f}\longrightarrow S_{\{\alpha_{1},\cdots,\alpha_{n}\}}$，则$\rho$ 是一个单同态。事实上，若$g(\alpha_{i})=\alpha_{i}$，$\forall \alpha\in E$，$\alpha$都可由$k,\alpha_{1},\cdots,\alpha_{n}$的加减乘除运算得到，则$g(\alpha)=\alpha$，所以$g=id$。由于$\rho$ 是单同态，$G_{f}$可以看成$S_{n}$的一个子群。\par
+
+例：$\rho:G_{f}\longrightarrow S_{\{\alpha_{1},\cdots,\alpha_{n}\}}$不一定是满同态。$f(x)=(x^{2}-2)(x-1) \in Q[x]$，$f(x)$在分裂域上有$3$个根，但$\forall g\in G_{f}$，一定有$g(1)=1$，所以$G_{f}$为$S_{3}$的真子集。
+
+\begin{proposition}$f(x)$不可约$\Longleftrightarrow$ $G_{f}$在$\{\alpha_{1},\cdots,\alpha_{n}\}$上传递。
+\end{proposition}
+
+当$f(x)$不可约时，$[K(\alpha):K]=n$（$\alpha$为$f(x)$在扩域上的根），而$[K(\alpha):K]$整除$[E:K]$，由引理$4.2$，$[E:K]=|G_{f}|$，所以$G_{f}$在 \\ $\{\alpha_{1},\cdots,\alpha_{n}\}$ 上传递时，$n\mid |G_{f}|$。\par
+
+例如$f(x)$为$K$上的二次多项式，$f(x)$可约时，$G_{f}\cong \{id\}$，$f(x)$不可约时，$G_{f}\cong S_{2}$。\par
+
+对于$K$上的多项式$f(x)=x^{n}+a_{1}x^{n-1}+\cdots+a_{n-1}x+a_{n}$，在分裂域$E$上可以写成$f(x)=\prod\limits_{i=1}^{n}(x-\alpha_{i})$。\par
+
+令\\
+\centerline{$\Delta(f)=\prod\limits_{1\leq i<j\leq n}(\alpha_{i}-\alpha_{j})$，$D(f)=(\Delta(f))^{2}=\prod\limits_{1\leq i<j\leq n}(\alpha_{i}-\alpha_{j})^{2}$}\par
+
+因为$f(x)$没有重根，所以$\Delta(f)\neq 0$。$G_{f}$看成$S_{n}$的子群，$\forall g\in G_{f}$\\
+\centerline{$g(\Delta(f))=\prod\limits_{1\leq i<j\leq n}(g(\alpha_{i})-g(\alpha_{j}))=(-1)^{\tau(g)}\cdot \Delta(f)$}\\
+若$g$为奇置换，$g(\Delta(f))=-\Delta(f)$，若$g$ 为偶置换，$g(\Delta(f))=\Delta(f)$。
+
+\begin{proposition}$G_{f}$有奇置换$\Longleftrightarrow$ $\Delta(f)\notin K$。
+\end{proposition}
+
+证：$"\Longrightarrow"$ 设$g\in G_{f}$为奇置换，$g(\Delta(f))\neq \Delta(f)$。而$G_{f}$中元素是保持$K$中元素不动的自同构，所以$\Delta(f)\notin K$。\par
+$"\Longleftarrow"$ 若$\Delta(f)\notin K$，必存在$g\in G_{f}$，使得$g(\Delta(f))\neq \Delta(f)$，则$g$为奇置换。\par
+
+\vspace{2ex}
+
+我们发现$D(f)=(\Delta(f))^{2}=\prod\limits_{1\leq i<j\leq n}(\alpha_{i}-\alpha_{j})^{2}$，$\forall g\in G_{f}$，$g(D(f))=D(f)$，所以$D(f)\in K$。
+
+\begin{definition}设$P(x_{1},\cdots,x_{n})\in K[x_{1},\cdots,x_{n}]$，若对$\forall \sigma\in S_{n}$，\\ \centerline{$P(x_{1},\cdots,x_{n})=P(x_{\sigma(1)},\cdots,x_{\sigma(n)})$}\\
+则称P为\textbf{对称多项式}。
+\end{definition}
+
+令\\
+\begin{equation}
+\left\{
+\begin{aligned}
+\sigma_{1}=&x_{1}+\cdots+x_{n}\nonumber\\
+\sigma_{2}=&x_{1}x_{2}+x_{1}x_{3}+\cdots+x_{n-1}x_{n}\nonumber\\
+\vdots&\nonumber\\
+\sigma_{n}=&x_{1}x_{2}\cdots x_{n}\nonumber\\
+\end{aligned}
+\right.
+\end{equation}\par
+$\sigma_{i}$为$x_{1},\cdots,x_{n}$中任意$i$个元素乘积之和，称$\sigma_{1},\cdots,\sigma_{n}$为$x_{1},\cdots,x_{n}$的基本对称多项式。\par
+
+$P$，$Q$均为多项式，$P(x_{1},\cdots,x_{n})=Q(\sigma_{1},\cdots,\sigma_{n})$ $\Longleftrightarrow$ $P$为对称多项式。$D(f)=\prod\limits_{1\leq i<j\leq n}(\alpha_{i}-\alpha_{j})^{2}$显然为一个关于$\alpha_{1},\cdots,\alpha_{n}$的对称多项式。
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{三次多项式的Galois群}
+
+设$f(x)$为$K$上的三次多项式，在分裂域上有$3$个根$x_{1}$，$x_{2}$，$x_{3}$，要判断$G_{f}$中有没有奇置换，我们就要计算一下$D(f)$。\par
+
+设$P(x_{1},x_{2},x_{3})=((x_{1}-x_{2})(x_{1}-x_{3})(x_{2}-x_{3}))^{2}$，把等式右边展开之后的项$x_{1}^{i}x_{2}^{j}x_{3}^{k}$记为$(i,j,k)$。我们将展开后的各项按$x_{i}$的次数从高到低进行排列，设$i\geq j\geq k$，可分为五项，依次为$(4,2,0)$，$(4,1,1)$，$(3,3,0)$，$(3,2,1)$，$(2,2,2)$。因为$P$为对称多项式，$(4,2,0)$这一项代表的是$a_{1}(x_{1}^{4}x_{2}^{2}+x_{1}^{4}x_{3}^{2}+x_{2}^{4}x_{1}^{2}+x_{2}^{4}x_{3}^{2}+x_{3}^{4}x_{1}^{2}+x_{3}^{4}x_{2}^{2})$，
+$(4,1,1)$是指$a_{2}(x_{1}^{4}x_{2}x_{3}+x_{2}^{4}x_{1}x_{3}+x_{3}^{4}x_{1}x_{2})$，另外$3$项同理可得。\par
+
+基本对称多项式与原多项式的系数有这样的关系，$\sigma_{k}=(-1)^{k}a_{k}$，因此我们想把$P(x_{1},\cdots,x_{n})$转化为$Q(\sigma_{1},\cdots,\sigma_{n})$的形式，可以在不求出$x_{1},\cdots,x_{n}$的情况下，仅仅依靠系数就能进行计算。\par
+
+按照前面对单项式的排列方法，$\sigma_{i}$中的最高项为$x_{1}x_{2}\cdots x_{i}$，则$\sigma_{1}^{l_{1}}\sigma_{2}^{l_{2}}\cdots \sigma_{n}^{l_{n}}$中的最高项为$x_{1}^{l_{1}+l_{2}+\cdots+l_{n}}x_{2}^{l_{2}+\cdots+l_{n}}\cdots x_{n}^{l_{n}}$，所以$x_{1}^{i_{1}}x_{2}^{i_{2}}\cdots x_{n}^{i_{n}}$ 与$\sigma_{1}^{i_{1}-i_{2}}\sigma_{2}^{i_{2}-i_{3}}\cdots \sigma_{n-1}^{i_{n-1}-i_{n}}\sigma_{n}^{i_{n}}$ 的最高项相同。可以用$\sigma_{1}^{i-j}\sigma_{2}^{j-k}\sigma_{3}^{k}$ 将$P(x_{1},x_{2},x_{3})$的每一项消掉，最后得到\\
+\centerline{$P(x_{1},x_{2},x_{3})=A\sigma_{1}^{2}\sigma_{2}^{2}+B\sigma_{1}^{3}\sigma_{3}+C\sigma_{2}^{3}+D\sigma_{1}
+\sigma_{2}\sigma_{3}+E\sigma_{3}^{2}$}\\
+只要确定了各项系数就可以算出$P(x_{1},x_{2},x_{3})$的值。\par
+
+给$x_{1},x_{2},x_{3}$赋值，用待定系数法可求出$A=1$，$B=-4$，$C=-4$，\\ $D=18$，$E=-27$，则\\
+\centerline{$P(x_{1},x_{2},x_{3})=\sigma_{1}^{2}\sigma_{2}^{2}-4\sigma_{1}^{3}\sigma_{3}-4\sigma_{2}^{3}+18\sigma_{1}
+\sigma_{2}\sigma_{3}-27\sigma_{3}^{2}$}\par
+$D(f)$就可以通过$P(x_{1},x_{2},x_{3})$来求得，然后看$\Delta(f)$是不是属于$K$。若$\Delta(f)\notin K$，$G_{f}\cong S_{3}$，会有下面的表\\
+\centerline{
+\xymatrix@C=2ex{
+    K\ar[d] & \subseteq & M\ar[d] & \subseteq & E\ar[d]  \\
+    S_{3} & \rhd & A_{3} & \rhd & \{id\}
+    }
+}\par
+经过计算验证，我们会发现$K(\Delta(f))$对应的Galois群恰好就是$A_{3}$，也就是说$M=K(\Delta(f))$，而且$\Delta(f)$在$K$上的极小多项式为$x^{2}-(\Delta(f))^{2}$。\par
+\vspace{2em}
+
+例：$f(x)=x^{3}+x^{2}-2x+1\in Q[x]$，在$Q$上不可约。$D(f)=-31$，$\Delta(f)=\pm\sqrt{-31}\notin Q$，所以$G_{f}$中有奇置换，且$3\mid |G_{f}|$，则$G_{f}\cong S_{3}$。\par
+
+例：$f(x)=x^{3}-3x+1\in Q[x]$，在$Q$上不可约。$D(f)=81$，$\Delta(f)=\pm9\in Q$，所以$G_{f}$中没有奇置换，且$3\mid |G_{f}|$，则$G_{f}\cong A_{3}$。\par
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{四次多项式的Galois群}
+
+设$f(x)=x^{4}+bx^{3}+cx^{2}+dx+e$是$K$上的不可约多项式，$f(x)$没有重根，$E$为$f(x)$的分裂域，在$E$上有$f(x)=(x-\alpha_{1})(x-\alpha_{2})(x-\alpha_{3})(x-\alpha_{4})$，我们先假定$G_{f}=S_{4}$。\par
+
+对于
+
+\centerline{
+\xymatrix@C=2ex{
+    K\ar[d] & \subseteq & K(\Delta(f))\ar[d] & \subseteq & M\ar[d] & \subseteq & E\ar[d]  \\
+    S_{4} & \rhd & A_{4} & \rhd & K_{4} & \rhd & \{id\}
+    }
+}\par
+\vspace{2em}
+我们想求出$K_{4}$对应的Galois群$M$，$M$中元素是在$K_{4}$作用下不动的。
+
+令
+\begin{equation}
+\left\{
+\begin{aligned}
+\beta_{1}=\alpha_{1}\alpha_{2}+\alpha_{3}\alpha_{4}\nonumber\\
+\beta_{2}=\alpha_{1}\alpha_{3}+\alpha_{2}\alpha_{4}\nonumber\\
+\beta_{3}=\alpha_{1}\alpha_{4}+\alpha_{2}\alpha_{3}\nonumber\\
+\end{aligned}
+\right.
+\end{equation}\par
+我们发现$\{\beta_{1},\beta_{2},\beta_{3}\}$在$K_{4}$作用下还是
+$\{\beta_{1},\beta_{2},\beta_{3}\}$。$K(\beta_{1},\beta_{2},\beta_{3})$ 对应的中间群为$Gal(E/K(\beta_{1},\beta_{2},\beta_{3}))$，而$Gal(E/K(\beta_{1},\beta_{2},\beta_{3}))=\{\tau\in S_{4}\mid \tau(\beta_{i})=\beta_{i},i=1,2,3\}$，经过计算得到，$Gal(E/K(\beta_{1},\beta_{2},\beta_{3}))=K_{4}=\{(1),(12)(34),(13)(24),(14)(23)\}$，也就是说$M=K(\beta_{1},\beta_{2},\beta_{3})$。\par
+
+容易验证，$\{\beta_{1},\beta_{2},\beta_{3})\}$在$S_{4}$的作用下是一条轨道。设$g(x)=(x-\beta_{1})(x-\beta_{2})(x-\beta_{3})$，则$g(x)$在$G_{f}$的作用下是不变的。$G_{f}$中元素为$K-\text{同构}$，所以$g(x)\in K[x]$，且$K(\beta_{1},\beta_{2},\beta_{3})$为$g(x)$的分裂域。\par
+
+$g(x)=x^{3}-(\beta_{1}+\beta_{2}+\beta_{3})x^{2}+(\beta_{1}\beta_{2}+\beta_{1}\beta_{3}+\beta_{2}\beta_{3})x+
+\beta_{1}\beta_{2}\beta_{3}$\\
+其中$\beta_{1}+\beta_{2}+\beta_{3}=\alpha_{1}\alpha_{2}+\alpha_{1}\alpha_{3}+\alpha_{1}\alpha_{4}+\alpha_{2}\alpha_{3}+
+\alpha_{2}\alpha_{4}+\alpha_{3}\alpha_{4}=\sigma_{2}=c$，$\beta_{1}\beta_{2}+\beta_{1}\beta_{3}+\beta_{2}\beta_{3}$是对称的，将$\beta_{1},\beta_{2},\beta_{3}$代入后展开，按次数排列有两项$(2,1,1,0)$和$(1,1,1,1)$，则$\beta_{1},\beta_{2},\beta_{3}$ 可化为$A\sigma_{1}\sigma_{3}+B\sigma_{4}$，用待定系数法可确定$A=1$，$B=-4$。同样，$\beta_{1}\beta_{2}\beta_{3}$展开后有$(3,1,1,1)$，$(2,2,2,0)$，$(2,2,1,1)$，可表示成$A\sigma_{1}^{2}\sigma_{4}+B\sigma_{3}^{2}+C\sigma_{2}\sigma_{4}$，用待定系数法求得$A=-1$，$B=-1$，$C=4$，则有
+\begin{equation}
+\left.
+\begin{aligned}
+g(x)=&x^{3}-\sigma_{2}x^{2}+(\sigma_{1}\sigma_{3}-4\sigma_{4})x-\sigma_{1}^{2}\sigma_{4}-\sigma_{3}^{2}+4\sigma_{2}\sigma_{4}\nonumber\\
+=&x^{3}-cx^{2}+(bd-4e)x-b^{2}e-d^{2}+4ce\nonumber\\
+\end{aligned}
+\right.
+\end{equation}\par
+
+由于$\beta_{1}-\beta_{2}=\alpha_{1}\alpha_{2}+\alpha_{3}\alpha_{4}-\alpha_{1}\alpha_{3}-\alpha_{2}\alpha_{4}=(\alpha_{1}-
+\alpha_{4})(\alpha_{2}-\alpha_{3})$，$\beta_{1}-\beta_{3}=(\alpha_{1}-\alpha_{3})(\alpha_{2}-\alpha_{4})$，
+$\beta_{2}-\beta_{3}=(\alpha_{1}-\alpha_{2})(\alpha_{3}-\alpha_{4})$
+\begin{equation}
+\left.
+\begin{aligned}
+\Delta(g)=&(\beta_{1}-\beta_{2})(\beta_{1}-\beta_{3})(\beta_{2}-\beta_{3})\nonumber\\
+=&(\alpha_{1}-\alpha_{4})(\alpha_{2}-\alpha_{3})(\alpha_{1}-\alpha_{3})(\alpha_{2}-\alpha_{4})(\alpha_{1}-\alpha_{2})(\alpha_{3}-\alpha_{4})\nonumber\\
+=&\Delta(f)\nonumber\\
+\end{aligned}
+\right.
+\end{equation}\par
+
+因此计算四次多项式的$\Delta(f)$可转化为计算三次多项式的$\Delta(g)$。\par
+\vspace{2em}
+前面的过程都在假定$f(x)$的Galois群是$S_{4}$的前提下，那么给了一个$K$上的四次不可约多项式$f(x)$ （$K$的特征为$0$）。我们来确定它的Galois群。\par
+
+首先计算$g(x)$。$K(\beta_{1},\beta_{2},\beta_{3})$是$g(x)$的分裂域。$G_{g}$为$g(x)$的Galois群。然后判断$g(x)$在$K$上是否可约。若$g(x)$不可约，可通过前面计算三次多项式Galois群的方法来计算$G_{g}$。若$g(x)$可约，则$g(x)$可写成三个一次因式或一个一次因式和一个二次因式的乘积，$G_{g}$的计算就更容易了。\par
+
+$Gal(E/K(\beta_{1},\beta_{2},\beta_{3}))=K_{4}\cap G_{f}$，由于$K(\beta_{1},\beta_{2},\beta_{3})$为$g(x)$的分裂域，$K(\beta_{1},\beta_{2},\beta_{3})/K$是Galois扩张，由Galois 基本定理，$G_{g}\cong G_{f}/K_{4}\cap G_{f}$。\par
+
+\centerline{
+\xymatrix@C=2ex{
+    K\ar[d] & \subseteq & K(\Delta(f))\ar[d] & \subseteq & K(\beta_{1},\beta_{2},\beta_{3})\ar[d] & \subseteq & E\ar[d]  \\
+    S_{4}\ar[d] & \rhd & A_{4}\ar[d] & \rhd & K_{4}\ar[d] & \rhd & \{id\}\ar[d] \\
+    G_{f} & \rhd & A_{4}\cap G_{f} & \rhd & K_{4}\cap G_{f} & \rhd & \{id\}
+    }
+}\par
+\vspace{2em}
+又因为$4\mid |G_{f}|$，所以$G_{f}$有以下几种情况\par
+\centerline{
+\begin{tabular}{|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  $|G_{g}|$ & $|G_{f}|$ & $G_{f}$ \\ \hline
+  6 & 24 & $S_{4}$ \\ \hline
+  3 & 12 & $A_{4}$ \\ \hline
+  2 & 8 & $D_{4}\cong K_{4}\{(1),(12)\}$ \\ \hline
+  2 & 4 & $C_{4}\cong <(1234)>$ \\ \hline
+  1 & 4 & $K_{4}$ \\
+  \hline
+\end{tabular}
+}\par
+\vspace{2em}
+因此，我们可以通过$g(x)$来计算$G_{g}$，然后根据表格来推断出$G_{f}$，当$|G_{g}|=2$时，$G_{f}=D_{4}\text{或}C_{4}$。下面看$f(x)$在$K(\beta_{1},\beta_{2},\beta_{3})$上是否可约，当$f(x)$在$K(\beta_{1},\beta_{2},\beta_{3})$上不可约时，$K(\beta_{1},\beta_{2},\beta_{3})$对应的Galois群在$f(x)$的根的集合$\{\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}\}$ 上是传递的，$G_{f}$只能是$D_{4}$，若是$C_{4}$的话，$K_{4}\cap C_{4}$中有两个元素，在$\{\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}\}$ 上是不传递的。当$f(x)$在$K(\beta_{1},\beta_{2},\beta_{3})$上可约时，$G_{f}=C_{4}$。
+\vspace{2em}
+
+例：$f(x)=x^{4}-4x+2\in Q[x]$，由Eisenstein判别法可知，$f(x)$在$Q$上不可约。$g(x)=x^{3}-8x+16$ 在$Q$上不可约，$(\Delta(f))^{2}=(\Delta(g))^{2}=-4864$，所以$\Delta(g)\notin Q$，则$G_{g}=S_{3}$。查表可得，$G_{f}=S_{4}$。\par
+
+例：$f(x)=x^{4}+4x^{2}+2\in Q[x]$，由Eisenstein 判别法可知，$f(x)$在$Q$上不可约。$g(x)=(x-4)(x^{2}-8)$，分裂域为$M=Q(\sqrt{2})$，$|G_{g}|=2$，而$f(x)$在$Q(\sqrt{2})$上可约，所以$G_{f}=C_{4}$。\par
+
+例：$f(x)=x^{4}-10x^{2}+4\in Q[x]$，因为在$Q$上没有根，$f(x)$在$Q$上不可约。$g(x)=(x+10)(x+4)(x-4)$，$|G_{g}|=1$。查表可得，$G_{f}=K_{4}$。\par
+
+
+\renewcommand{\baselinestretch}{1.25}
+\chapter{分圆扩张与循环扩张}
+\thispagestyle{fancy} \fancyhead[CO,CE]{代数学}
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{分圆扩张}
+
+设$K$是一个域，$charK=0$，$f(x)=x^{n}-1\in K[x]$ 在其分裂域$E$上有$n$个根$1$，$\xi_{1}$，$\xi_{2}$，$\cdots$，$\xi_{n-1}$，这$n$个根构成一个循环群$<\xi_{1}>$，$\xi_{i}=\xi_{1}^{i}$，且$|\xi_{1}|=n$，我们称$\xi_{1}$为$n$次本原单位根。当$(i,n)=1$时，$\xi_{1}^{i}$也是一个$n$次本原单位根。那么$E=K(1,\xi_{1},\cdots,\xi_{n-1})=K(\xi)$（$\xi$ 为一个$n$次本原单位根）。$E$为分裂域，所以$E/K$ 为Galois扩张。\par
+
+设$G_{f}=Gal(E/K)$，$\forall g\in G_{f}$，存在$i$，$(i,n)=1$，使$g(\xi)=\xi^{i}$，则存在一个群同态$\sigma:G_{f}\longrightarrow (Z/(n))^{\ast}$，使$\sigma(g)=\bar{i}$。而$g$由$i$唯一确定，所以$\sigma$为单同态，特别的，当$K=Q$时，$G_{f}\cong (Z/(n))^{\ast}$。
+
+\begin{remark}$(Z/(n))^{\ast}$在乘法意义下构成一个群。当$n=2$时，$(Z/(2))^{\ast}=\{\bar{1}\}$；当$n=6$时，$(Z/(6))^{\ast}=\{\bar{1},\bar{5}\}$ 是一个$2$阶循环群；当$n=12$时，$(Z/(12))^{\ast}=\{\bar{1},\bar{5},\bar{7},\bar{11}\}\cong K_{4}$。$(Z/(n))^{\ast}$是一个$\varphi(n)$阶的交换群，若$n=p_{1}^{r_{1}}\cdots p_{s}^{r_{s}}$，$(Z/(n))^{\ast}\cong (Z/(p_{1}^{r_{1}}))^{\ast}\times \cdots \times (Z/(p_{s}^{r_{s}}))^{\ast}$。
+\end{remark}
+
+设$\xi$是一个$n$次本原单位根，则全部的$n$次本原单位根为$\xi^{i}$，其中$(i,n)=1$，$1\leq i\leq n-1$，记\\
+\centerline{$\Phi_{n}(x)=\prod\limits_{(i,n)=1,1\leq i\leq n-1}(x-\xi^{i})$}\\
+当$K$的特征为$0$时（即$K=Q$），称$\Phi_{n}(x)$为分圆多项式，其次数为欧拉函数$\varphi(n)$。而且我们有\\
+\centerline{$x^{n}-1=\prod\limits_{d|n}\Phi_{d}(x)$}\par
+
+例：$\Phi_{1}(x)=x-1$，$\Phi_{2}(x)=x+1$，$\Phi_{3}(x)=x^{2}+x+1$\par
+$\Phi_{4}(x)=\frac{x^{4}-1}{(x-1)(x+1)}=x^{2}+1$，$\Phi_{5}(x)=x^{4}+x^{3}+x^{2}+x+1$\par
+$\Phi_{6}(x)=\frac{x^{6}-1}{(x-1)(x+1)(x^{2}+x+1)}=x^{2}-x+1$\par
+当$p$为素数时，$\Phi_{p}(x)=x^{p-1}+x^{p-2}+\cdots +x+1$ \par
+
+因为$x^{n}-1$为首$1$的整系数多项式，则它所有首$1$的有理因式也是整系数多项式，故分圆多项式$\Phi_{n}(x)$为首$1$的整系数多项式。
+
+\begin{proposition}$\Phi_{n}(x)$是$Q$上的不可约多项式。
+\end{proposition}
+
+$\Phi_{n}(x)$在$Q$上不可约需要在模$p$的域上说明，在此不给出证明。\par
+
+由上述命题可知，$f(x)$的$n$次本原单位根在$Q$上的极小多项式为$\Phi_{n}(x)$。$|G_{f}|=deg\Phi_{n}(x)=\varphi(n)$，所以$G_{f}\cong (Z/(n))^{\ast}$。\par
+
+
+\renewcommand{\baselinestretch}{1.25}\large
+\section{循环扩张}
+
+在对$f(x)=x^{n}-1$的Galois群有所了解之后，我们来看一下$f(x)=x^{n}-c$的Galois群。设$f(x)$为$K$上的不可约多项式。\par
+
+若$K$包含$x^{n}-1$的所有根，则$f(x)$的分裂域$E=K(\alpha,\alpha\xi,\cdots,\alpha\xi^{n-1})=K(\alpha)$，若$K$不包含$x^{n}-1$的所有根，设$M=K(\xi)$，则$E=M(\alpha)$。 \par
+
+\begin{proposition}设$K$包含$x^{n}-1$的所有根，$f(x)=x^{n}-c\in K[x]$，则$G_{f}$是循环群。
+\end{proposition}
+证：设$E$是$f(x)$在$K$上的分裂域，$\alpha$为$f(x)$的一个根，则$f(x)$所有根为$\alpha$，$\alpha\xi$，$\cdots$，$\alpha\xi^{n-1}$（$\xi$为$n$次本原单位根），$E=K(\alpha)$。对于$\forall g\in G_{f}$，存在
+
+
+
+
+
+
+
+
+\backmatter
+\end{document}
