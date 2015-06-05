@@ -11,6 +11,7 @@
 % 输出参数：
 % segI:分割的子图像集合
 %
+
 function segI = NcutSegment(I, NI, NX, r, sNcut, sArea)
 [nRow, nCol, c] = size(I);
 N = nRow * nCol;
